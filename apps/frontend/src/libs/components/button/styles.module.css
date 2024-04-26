@@ -34,11 +34,24 @@
 	border-radius: 26px;
 }
 
+.default {
+	min-height: 38px;
+	padding: 6px 10px;
+	font-size: var(--font-size-200);
+	border-radius: 2px;
+}
+
 .regular > .content {
 	column-gap: 8px;
 }
 
 .small > .content {
+	column-gap: 4px;
+}
+
+.default > .content {
+	display: flex;
+	flex-direction: row-reverse;
 	column-gap: 4px;
 }
 
@@ -52,6 +65,18 @@
 	color: var(--main-color);
 	background-color: transparent;
 	border-color: var(--main-color);
+}
+
+.black {
+	color: var(--main-white);
+	background-color: var(--main-black);
+	border-color: transparent;
+}
+
+.red {
+	color: var(--main-white);
+	background-color: var(--main-color);
+	border-color: transparent;
 }
 
 .primary.disabled,
@@ -86,6 +111,16 @@
 	.secondary:hover {
 		color: var(--main-white);
 		border-color: var(--main-white);
+	}
+
+	.black:hover {
+		color: var(--main-white);
+		background-color: var(--main-color);
+	}
+
+	.red:hover {
+		color: var(--main-white);
+		background-color: var(--main-black);
 	}
 
 	.primary.disabled:hover {

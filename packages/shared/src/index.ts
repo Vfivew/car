@@ -51,6 +51,15 @@ export {
 	authUpdatePasswordValidationSchema,
 } from "./modules/auth/auth.js";
 export {
+	CarError,
+	CarErrorMessage,
+	type CarGetByIdRequestDto,
+	type CarRequestDto,
+	type CarResponseDto,
+	CarsApiPath,
+	carIdParametersValidationSchema,
+} from "./modules/cars/cars.js";
+export {
 	type UserAuthResponseDto,
 	type UserDetailsResponseDto,
 	UserError,

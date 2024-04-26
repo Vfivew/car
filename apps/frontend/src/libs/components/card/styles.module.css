@@ -1,0 +1,76 @@
+@import url("~/assets/css/media.css");
+
+.container {
+	display: flex;
+	flex-direction: column;
+	max-width: 300px;
+	max-height: 380px;
+	background-color: rgb(197 34 181);
+}
+
+.title {
+	font-size: var(--font-size-300);
+	font-weight: bold;
+}
+
+.image {
+	height: 50%;
+}
+
+.content {
+	position: relative;
+	height: 50%;
+	padding: 10px;
+}
+
+.price {
+	text-align: start;
+	position: absolute;
+	top: 40%;
+	right: 20%;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	justify-content: center;
+	width: 40%;
+	height: 50%;
+	font-size: var(--font-size-200);
+	font-weight: bold;
+	color: var(--main-white);
+	text-transform: uppercase;
+	background-color: red;
+}
+
+.select-price {
+	font-size: var(--font-size-400);
+}
+
+@keyframes appearance-left {
+	from {
+		opacity: 0;
+		transform: translateX(-50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@keyframes appearance-right {
+	from {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(0);
+	}
+}
+
+@media screen and (--medium-screen) {
+}
+
+@media screen and (--small-screen) {
+}

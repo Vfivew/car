@@ -1,8 +1,10 @@
 import { type AppRoute } from "~/libs/enums/enums.js";
 import { getValidClassNames } from "~/libs/helpers/helpers.js";
 import { type IconName, type ValueOf } from "~/libs/types/types.js";
+
 import { Icon } from "../icon/icon.js";
 import { Link } from "../link/link.js";
+import { Loader } from "../loader/loader.js";
 import styles from "./styles.module.css";
 
 type Properties = {
@@ -14,9 +16,10 @@ type Properties = {
 	isDisabled?: boolean;
 	isLoading?: boolean;
 	label: string;
+	loaderColor?: React.ComponentProps<typeof Loader>["color"];
 	onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-	size?: "regular" | "small";
-	style?: "plain" | "primary" | "secondary";
+	size?: "default" | "regular" | "small";
+	style?: "black" | "primary" | "red" | "secondary";
 	type?: "button" | "submit";
 };
 
@@ -29,6 +32,7 @@ const Button: React.FC<Properties> = ({
 	isDisabled = false,
 	isLoading,
 	label,
+	loaderColor = "white",
 	onClick,
 	size = "regular",
 	style = "primary",
@@ -68,6 +72,13 @@ const Button: React.FC<Properties> = ({
 					onClick={onClick}
 					type={type}
 				>
+					{isLoading && (
+						<Loader
+							className={getValidClassNames(styles["button-loader"])}
+							color={loaderColor}
+							size="small"
+						/>
+					)}
 					<div className={buttonContentStyles}>
 						{icon}
 						<span className={labelStyle}>{label}</span>
