@@ -12,9 +12,7 @@ const ignoresConfig = {
 const overridesConfigs = [
 	{
 		files: ["knexfile.ts"],
-		rules: {
-			"import/no-default-export": ["off"],
-		},
+
 	},
 	{
 		files: ["src/db/migrations/**/*.ts"],

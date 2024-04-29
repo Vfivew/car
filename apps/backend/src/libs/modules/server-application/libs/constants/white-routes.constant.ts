@@ -1,0 +1,14 @@
+import { APIPath } from "~/libs/enums/enums.js";
+import { AuthApiPath } from "~/modules/auth/auth.js";
+import { CarsApiPath } from "~/modules/cars/cars.js";
+
+const WHITE_ROUTES = [
+	`${APIPath.AUTH}${AuthApiPath.SIGN_UP}`,
+	`${APIPath.AUTH}${AuthApiPath.SIGN_IN}`,
+	`${APIPath.AUTH}${AuthApiPath.FORGOT_PASSWORD}`,
+	`${APIPath.AUTH}${AuthApiPath.UPDATE_PASSWORD}`,
+	`${APIPath.CARS}${CarsApiPath.ROOT}`,
+	`${APIPath.CARS}${CarsApiPath.$ID}`,
+];
+
+export { WHITE_ROUTES };
