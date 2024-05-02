@@ -3,6 +3,8 @@ import {
 	Carousel,
 	GreetingBanner,
 	OurServices,
+	GoogleMap,
+	AboutUs,
 } from "~/libs/components/components.js";
 import {
 	useAppDispatch,
@@ -60,6 +62,8 @@ const Overview: React.FC = () => {
 			<OurServices />
 			<AutoPark cars={cars} />
 			<Carousel data={data} />
+			<AboutUs/>
+			<GoogleMap />
 		</div>
 	);
 };

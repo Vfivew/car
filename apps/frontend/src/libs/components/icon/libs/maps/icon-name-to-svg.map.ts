@@ -19,6 +19,11 @@ import PlusOutlinedIcon from "~/assets/icons/plus-outlined.svg?react";
 import SearchIcon from "~/assets/icons/search.svg?react";
 import Twitter from "~/assets/icons/twitter.svg?react";
 import Wallet from "~/assets/icons/wallet.svg?react";
+import ClimateControl from "~/assets/icons/climate-control.svg?react";
+import Trunk from "~/assets/icons/trunk.svg?react";
+import CarDoor from "~/assets/icons/car-door.svg?react";
+import Letter from "~/assets/icons/letter.svg?react";
+import Phone from "~/assets/icons/phone.svg?react";
 import { type IconName } from "~/libs/types/types.js";
 
 const iconNameToSvg: Record<
@@ -26,12 +31,14 @@ const iconNameToSvg: Record<
 	React.FC<React.SVGProps<SVGSVGElement>>
 > = {
 	add: AddIcon,
+	phone: Phone,
 	arrowNext: ArrowNext,
 	back: BackIcon,
 	backArrow: BackArrowIcon,
 	burger: BurgerIcon,
 	bus: Bus,
 	car: Car,
+	letter: Letter,
 	checked: Checked,
 	delete: DeleteIcon,
 	edit: EditIcon,
@@ -46,6 +53,9 @@ const iconNameToSvg: Record<
 	search: SearchIcon,
 	twitter: Twitter,
 	wallet: Wallet,
+	climateControl: ClimateControl,
+	trunk: Trunk,
+	carDoor: CarDoor,
 };
 
 export { iconNameToSvg };

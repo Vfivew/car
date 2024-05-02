@@ -7,26 +7,26 @@ import {
 } from "~/modules/auth/auth.js";
 
 import { Image } from "../image/image.js";
-// import { actions as userCoursesActions } from "~/modules/user-courses/user-courses.js";
-
 import { Button } from "../button/button.js";
 import { Link } from "../link/link.js";
 import styles from "./styles.module.css";
+import { Loader } from "../components.js";
 
 type Properties = {
 	menuItems: MenuItem[];
 	user: UserAuthResponseDto | null;
+	isLoading: boolean;
 };
 
-const Header: React.FC<Properties> = ({ menuItems, user }: Properties) => {
+const Header: React.FC<Properties> = ({
+	menuItems,
+	user,
+	isLoading,
+}: Properties) => {
 	const dispatch = useAppDispatch();
 	const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false);
-	console.log(user)
 	const handleLogOut = useCallback(() => {
 		void dispatch(authActions.logOut()).unwrap();
-		// .then(() => {
-		// 	dispatch(userCoursesActions.reset());
-		// });
 	}, [dispatch]);
 
 	const toggleBurger = useCallback(() => {
@@ -68,33 +68,41 @@ const Header: React.FC<Properties> = ({ menuItems, user }: Properties) => {
 									</Link>
 								);
 							})}
-							{user ? (
-								<Button
-									className={styles["log-out-btn"]}
-									iconName="logOut"
-									label="Log Out"
-									onClick={handleLogOut}
-								/>
+							{isLoading ? (
+								<Loader size="small" />
 							) : (
 								<>
-									<Link
-										activeClassName={styles["active"]}
-										className={styles["burger-link"]}
-										key="Login"
-										onClick={handleLinkClick}
-										to="/sign-in"
-									>
-										<span className={styles["link-title"]}>Login</span>
-									</Link>
-									<Link
-										activeClassName={styles["active"]}
-										className={styles["burger-link"]}
-										key="Registration"
-										onClick={handleLinkClick}
-										to="/sign-up"
-									>
-										<span className={styles["link-title"]}>Registration</span>
-									</Link>
+									{user ? (
+										<Button
+											className={styles["log-out-btn"]}
+											iconName="logOut"
+											label="Log Out"
+											onClick={handleLogOut}
+										/>
+									) : (
+										<>
+											<Link
+												activeClassName={styles["active"]}
+												className={styles["burger-link"]}
+												key="Login"
+												onClick={handleLinkClick}
+												to="/sign-in"
+											>
+												<span className={styles["link-title"]}>Login</span>
+											</Link>
+											<Link
+												activeClassName={styles["active"]}
+												className={styles["burger-link"]}
+												key="Registration"
+												onClick={handleLinkClick}
+												to="/sign-up"
+											>
+												<span className={styles["link-title"]}>
+													Registration
+												</span>
+											</Link>
+										</>
+									)}
 								</>
 							)}
 						</ul>

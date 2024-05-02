@@ -188,3 +188,7 @@ Examples:
 
 - `feat: add dashboard component tm-45`
 - `fix: update dashboard card size tm-212`
+
+<a href="https://iconscout.com/icons/car-door" class="text-underline font-size-sm" target="_blank">Car Door</a> by <a href="https://iconscout.com/contributors/triangle-squad" class="text-underline font-size-sm" target="_blank">Triangle Squad</a>
+<a href="https://iconscout.com/icons/climate-change" class="text-underline font-size-sm" target="_blank">Climate Change</a> by <a href="https://iconscout.com/contributors/vectorvalley" class="text-underline font-size-sm" target="_blank">Vector Valley</a>
+<a href="https://iconscout.com/icons/trunk" class="text-underline font-size-sm" target="_blank">Trunk</a> by <a href="https://iconscout.com/contributors/yogswpy" class="text-underline font-size-sm">Widyatmoko P.Y</a> on <a href="https://iconscout.com" class="text-underline font-size-sm">IconScout</a>

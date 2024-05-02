@@ -19,6 +19,11 @@ type IconName =
 	| "plusOutlined"
 	| "search"
 	| "twitter"
-	| "wallet";
+	| "wallet"
+	| "climateControl"
+	| "trunk"
+	| "phone"
+	| "letter"
+	| "carDoor";
 
 export { type IconName };

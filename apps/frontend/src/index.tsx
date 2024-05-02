@@ -5,7 +5,6 @@ import "~/assets/css/styles.css";
 import {
 	App,
 	Notification,
-	// ProtectedRoute,
 	RouterProvider,
 	StoreProvider,
 } from "~/libs/components/components.js";
@@ -15,6 +14,9 @@ import { Auth } from "~/pages/auth/auth.jsx";
 
 import { NotFound } from "./pages/not-found/not-found.js";
 import { Overview } from "./pages/overview/overview.js";
+import { Reservation } from "./pages/reservation/reservation.js";
+import { ReservationCar } from "./pages/reservation-car/reservation-car.js";
+
 
 createRoot(document.querySelector("#root") as HTMLElement).render(
 	<StrictMode>
@@ -27,6 +29,14 @@ createRoot(document.querySelector("#root") as HTMLElement).render(
 							{
 								element: <Overview />,
 								path: AppRoute.ROOT,
+							},
+							{
+								element: <Reservation />,
+								path: AppRoute.RESERVATION,
+							},
+							{
+								element: <ReservationCar />,
+								path: AppRoute.CAR,
 							},
 							{
 								element: <Auth />,

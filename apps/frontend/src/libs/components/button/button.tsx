@@ -16,7 +16,7 @@ type Properties = {
 	isDisabled?: boolean;
 	isLoading?: boolean;
 	label: string;
-	loaderColor?: React.ComponentProps<typeof Loader>["color"];
+	// loaderColor?: React.ComponentProps<typeof Loader>["color"];
 	onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 	size?: "default" | "regular" | "small";
 	style?: "black" | "primary" | "red" | "secondary";
@@ -32,7 +32,7 @@ const Button: React.FC<Properties> = ({
 	isDisabled = false,
 	isLoading,
 	label,
-	loaderColor = "white",
+	// loaderColor = "white",
 	onClick,
 	size = "regular",
 	style = "primary",
@@ -75,7 +75,7 @@ const Button: React.FC<Properties> = ({
 					{isLoading && (
 						<Loader
 							className={getValidClassNames(styles["button-loader"])}
-							color={loaderColor}
+							// color={loaderColor}
 							size="small"
 						/>
 					)}

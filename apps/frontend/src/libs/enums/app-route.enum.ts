@@ -6,7 +6,8 @@ const AppRoute = {
 	SIGN_IN: "/sign-in",
 	SIGN_UP: "/sign-up",
 	UPDATE_PASSWORD: "/update-password",
-	USERS_$ID: "/users/:id",
+	RESERVATION: "/reservation",
+	CAR: "/car",
 } as const;
 
 export { AppRoute };

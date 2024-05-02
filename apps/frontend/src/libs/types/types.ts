@@ -5,6 +5,7 @@ export { type MenuItem } from "./menu-item.type.js";
 export { type OurServicesItem } from "./our-services-item.types.js";
 export { type PagePermissions } from "./page-permissions.type.js";
 export { type ValueOf } from "./value-of.type.js";
+export { type SelectOption } from "./select-option.type.js";
 export {
 	type ServerErrorDetail,
 	type ServerErrorResponse,

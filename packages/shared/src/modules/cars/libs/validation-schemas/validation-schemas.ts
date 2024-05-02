@@ -1,1 +1,1 @@
-export { carIdParameters } from "./user-id-parameters.validation-schema.js";
+export { carIdParameters } from "./car-id-parameters.validation-schema.js";

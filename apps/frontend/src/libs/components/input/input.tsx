@@ -24,7 +24,9 @@ type Properties<T extends FieldValues> = {
 	name: FieldPath<T>;
 	placeholder?: string;
 	rows?: number;
-	type?: "email" | "password" | "text";
+	type?: "email" | "password" | "text" | "date" | "number";
+	minDate?: string;
+	maxDate?: string;
 };
 
 const Input = <T extends FieldValues>({
@@ -40,6 +42,8 @@ const Input = <T extends FieldValues>({
 	placeholder = "",
 	rows,
 	type = "text",
+	minDate = "",
+	maxDate = "",
 }: Properties<T>): JSX.Element => {
 	const { field } = useFormController({ control, name });
 
@@ -83,6 +87,8 @@ const Input = <T extends FieldValues>({
 					inputMode={inputMode}
 					placeholder={placeholder}
 					type={type}
+					min={type === "date" ? minDate : undefined}
+					max={type === "date" ? maxDate : undefined}
 				/>
 			)}
 			{hasError && <span className={styles["error"]}>{error as string}</span>}

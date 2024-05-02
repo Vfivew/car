@@ -12,6 +12,7 @@ import { reducer as appReducer } from "~/libs/slices/app/app.js";
 import { authApi, reducer as authReducer } from "~/modules/auth/auth.js";
 import { carApi, reducer as carsReducer } from "~/modules/cars/cars.js";
 import { userApi, reducer as usersReducer } from "~/modules/users/users.js";
+import { formApi, reducer as formsReducer } from "~/modules/form/forms.js";
 
 import { storage } from "../storage/storage.js";
 import { handleError } from "./middlewares/middlewares.js";
@@ -21,6 +22,7 @@ type RootReducer = {
 	auth: ReturnType<typeof authReducer>;
 	cars: ReturnType<typeof carsReducer>;
 	users: ReturnType<typeof usersReducer>;
+	forms: ReturnType<typeof formsReducer>;
 };
 
 type ExtraArguments = {
@@ -29,6 +31,7 @@ type ExtraArguments = {
 	notification: typeof notification;
 	storage: typeof storage;
 	userApi: typeof userApi;
+	formApi: typeof formApi;
 };
 
 class Store {
@@ -55,6 +58,7 @@ class Store {
 				auth: authReducer,
 				cars: carsReducer,
 				users: usersReducer,
+				forms: formsReducer,
 			},
 		});
 	}
@@ -66,6 +70,7 @@ class Store {
 			notification,
 			storage,
 			userApi,
+			formApi,
 		};
 	}
 }

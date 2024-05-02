@@ -1,7 +1,6 @@
 import { getValidClassNames } from "~/libs/helpers/helpers.js";
 import {
-	// useHandleClickOutside,
-	// useHandleEscPress,
+	useHandleClickOutside,
 	useRef,
 	useToggleScroll,
 } from "~/libs/hooks/hooks.js";
@@ -26,14 +25,11 @@ const Modal: React.FC<Properties> = ({
 	onClose,
 }: Properties) => {
 	const contentReference = useRef<HTMLDivElement | null>(null);
-	// useHandleClickOutside({
-	// 	onClick: onClose,
-	// 	ref: contentReference,
-	// });
 
-	// useHandleEscPress({
-	// 	onEscPress: onClose,
-	// });
+	useHandleClickOutside({
+		onClick: onClose,
+		ref: contentReference,
+	});
 
 	const modalStyles = getValidClassNames(
 		styles["modal"],
@@ -56,10 +52,9 @@ const Modal: React.FC<Properties> = ({
 					<Button
 						className={styles["close-btn"]}
 						hasVisuallyHiddenLabel
-						// iconName="cross"
+						iconName="arrowNext"
 						label="Close modal"
 						onClick={onClose}
-						// style="plain"
 					/>
 				</div>
 			</dialog>

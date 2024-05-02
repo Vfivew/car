@@ -1,0 +1,82 @@
+@import url("~/assets/css/media.css");
+
+.container {
+	position: relative;
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	background-color: var(--main-white);
+	border-radius: 4px;
+}
+
+.title {
+	font-size: var(--font-size-300);
+	font-weight: bold;
+	text-align: center;
+}
+
+.image {
+	width: 100%;
+	max-width: 300px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.content {
+	display: flex;
+	gap: 20px;
+	padding: 10px;
+}
+
+.common-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.car-modifications {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	align-items: center;
+}
+
+.car-modification-item {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+
+.checked {
+	color: red;
+	background-color: red;
+	border-radius: 10px;
+}
+
+.item-content {
+	display: flex;
+	gap: 6px;
+}
+
+.icon {
+	color: red;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+@media screen and (--hover-active) {
+	.button:hover {
+		color: var(--main-white);
+		background-color: var(--main-color);
+	}
+}
+
+@media screen and (--medium-screen) {
+}
