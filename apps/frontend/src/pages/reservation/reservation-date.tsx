@@ -12,7 +12,6 @@ import styles from "./styles.module.css";
 import {
 	Button,
 	Input,
-	ReservationBanner,
 	Select,
 } from "~/libs/components/components.js";
 import {
@@ -23,7 +22,7 @@ import {
 import { getTomorrowDateString } from "~/libs/helpers/helpers.js";
 import { OUR_OFFICE } from "./libs/constants/constants.js";
 
-const Reservation: React.FC = () => {
+const ReservationDate: React.FC = () => {
 	useAppTitle(AppTitle.RESERVATION);
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
@@ -49,8 +48,6 @@ const Reservation: React.FC = () => {
 
 	const handleInputChange = useCallback(
 		(formData: FormDate): void => {
-			console.log(formData)
-			console.log('555');
 			void dispatch(
 				formActions.updateDate({
 					office: formData.office,
@@ -58,6 +55,9 @@ const Reservation: React.FC = () => {
 					returnDate: formData.returnDate,
 				}),
 			);
+			if (!Object.keys(errors).length) {
+				navigate(AppRoute.RESERVATION_CAR);
+			}
 		},
 		[dispatch],
 	);
@@ -65,20 +65,17 @@ const Reservation: React.FC = () => {
 	const handleFormSubmit = useCallback(
 		(event_: React.BaseSyntheticEvent): void => {
 			void handleSubmit(handleInputChange)(event_);
-			if (!Object.keys(errors).length) {
-				  navigate(AppRoute.CAR);
-			}
 		},
-		[handleSubmit, handleInputChange],
+		[handleSubmit, handleInputChange, errors],
 	);
 
 	const handleResetForm = useCallback(() => {
+		void dispatch(formActions.resetDate());
 		reset();
 	}, [reset]);
 
 	return (
 		<div className={styles["container"]}>
-			<ReservationBanner />
 			<section className={styles["form-wrapper"]}>
 				<h2 className={styles["title"]}>Reserve your vehicle</h2>
 				<form action="" className={styles["form"]} onSubmit={handleFormSubmit}>
@@ -136,4 +133,4 @@ const Reservation: React.FC = () => {
 	);
 };
 
-export { Reservation };
+export { ReservationDate };

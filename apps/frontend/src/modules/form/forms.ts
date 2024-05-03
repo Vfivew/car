@@ -16,10 +16,13 @@ export {
 	type FormDate,
 	type FormRequestDto,
 	type FormResponseDto,
+	type FormPriceRequestDto,
+	type FormPrice,
 } from "./libs/types/types.js";
 export { formApi };
 export {
 	formParametersValidationSchema,
 	formCarParametersValidationSchema,
+	formInformationParametersValidationSchema,
 } from "./libs/validation-schemas/validation-schemas.js";
 export { actions, reducer } from "./slices/form.js";

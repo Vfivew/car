@@ -5,6 +5,7 @@ import { useAppSelector } from "~/libs/hooks/hooks.js";
 
 const ReservationBanner: React.FC = () => {
 	const { date, car, form } = useAppSelector((state) => state.forms);
+	const isFinishDisabled = date.startDate && date.returnDate && car.name;
 
 	return (
 		<div className={styles["container"]}>
@@ -12,7 +13,10 @@ const ReservationBanner: React.FC = () => {
 				<h2 className={styles["title"]}>Reservation</h2>
 				<ul className={styles["list"]}>
 					<li className={styles["item"]}>
-						<Link to={AppRoute.RESERVATION} activeClassName={styles["active"]}>
+						<Link
+							to={AppRoute.RESERVATION_DATE}
+							activeClassName={styles["active"]}
+						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>1</p>
 								<h3 className={styles["item-title"]}>Date</h3>
@@ -26,7 +30,10 @@ const ReservationBanner: React.FC = () => {
 						</Link>
 					</li>
 					<li className={styles["item"]}>
-						<Link to={AppRoute.CAR} activeClassName={styles["active"]}>
+						<Link
+							to={AppRoute.RESERVATION_CAR}
+							activeClassName={styles["active"]}
+						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>2</p>
 								<h3 className={styles["item-title"]}>Car</h3>
@@ -36,15 +43,19 @@ const ReservationBanner: React.FC = () => {
 								<p>{car.name ? car.name : "-- --"}</p>
 								<ul>
 									Addons:
-									<li>Child seat: {car.childSeat ? car.childSeat: "none"}</li>
+									<li>Child seat: {car.childSeat ? car.childSeat : "none"}</li>
 									<li>{car.ownDriver && "Own Driver"}</li>
 									<li>{car.additionalInsurance && "Additional insurance"}</li>
 								</ul>
 							</div>
 						</Link>
 					</li>
-					<li className={styles["item"]}>
-						<Link to={AppRoute.RESERVATION} activeClassName={styles["active"]}>
+					<li className={`${styles["item"]} ${!isFinishDisabled && styles["disabled"]}`}>
+						<Link
+							to={AppRoute.RESERVATION_INFROMATION}
+							isDisabled={!isFinishDisabled}
+							activeClassName={styles["active"]}
+						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>3</p>
 								<h3 className={styles["item-title"]}>Information</h3>

@@ -35,6 +35,7 @@
 	flex-direction: column;
 	gap: 10px;
 	width: 50%;
+	height: fit-content;
 	padding: 20px;
 	font-size: var(--font-size-500);
 	color: var(--main-white);

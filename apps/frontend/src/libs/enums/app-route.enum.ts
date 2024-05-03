@@ -6,8 +6,10 @@ const AppRoute = {
 	SIGN_IN: "/sign-in",
 	SIGN_UP: "/sign-up",
 	UPDATE_PASSWORD: "/update-password",
-	RESERVATION: "/reservation",
-	CAR: "/car",
+	RESERVATION_DATE: "/reservation-date",
+	RESERVATION_CAR: "/reservation-car",
+	FORM: "/form",
+	RESERVATION_INFROMATION: "/reservation-information",
 } as const;
 
 export { AppRoute };

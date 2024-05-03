@@ -3,21 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 import { DataStatus } from "~/libs/enums/enums.js";
 import { type ValueOf } from "~/libs/types/types.js";
 import {
+	FormPrice,
 	type Form,
 	type FormCar,
 	type FormDate,
 } from "~/modules/form/forms.js";
 
-import { getAllForms } from "./actions.js";
+import { getPrice } from "./actions.js";
 import { getDateToString } from "~/libs/helpers/helpers.js";
 
 type State = {
 	form: Form;
 	car: FormCar;
 	date: FormDate;
+	price: FormPrice
 	dataStatus: ValueOf<typeof DataStatus>;
 };
-const currentDate = getDateToString(new Date());
 
 const initialState: State = {
 	form: {
@@ -33,14 +34,18 @@ const initialState: State = {
 	car: {
 		carId: null,
 		name: "",
-		childSeat: null,
+		childSeat: "0",
 		ownDriver: false,
 		additionalInsurance: false,
+		image: "",
 	},
 	date: {
 		office: "",
-		startDate: currentDate,
+		startDate: "",
 		returnDate: "",
+	},
+	price: {
+		price:0
 	},
 	dataStatus: DataStatus.IDLE,
 };
@@ -60,18 +65,34 @@ const { actions, name, reducer } = createSlice({
 			};
 		},
 		updateCarId: (state, action) => {
-			// console.log(action, "ACTION");
 			state.car = {
 				...state.car,
 				...action.payload,
 			};
-			// console.log(state.date, "STATE");
+		},
+		resetDate: (state) => {
+			state.date = initialState.date;
+		},
+		resetCarId: (state) => {
+			state.car = initialState.car;
 		},
 		resetForm: (state) => {
 			state.form = initialState.form;
 		},
 	},
-	extraReducers(builder) {},
+	extraReducers(builder) {
+		builder.addCase(getPrice.fulfilled, (state, action) => {
+			state.price = action.payload;
+			state.dataStatus = DataStatus.FULFILLED;
+		});
+		builder.addCase(getPrice.pending, (state) => {
+			state.dataStatus = DataStatus.PENDING;
+		});
+		builder.addCase(getPrice.rejected, (state) => {
+			state.price = 0;
+			state.dataStatus = DataStatus.REJECTED;
+		});
+	},
 	initialState,
 	name: "form",
 });

@@ -1,28 +1,52 @@
-import { FormCar, type CarResponseDto } from "@car/shared";
+import { FormCar } from "@car/shared";
 
 import styles from "./styles.module.css";
-import { Button, Checkbox, Icon, Input, Modal } from "~/libs/components/components.js";
-import { useAppDispatch, useAppForm, useCallback } from "~/libs/hooks/hooks.js";
+import {
+	Button,
+	Checkbox,
+	Icon,
+	Input,
+	Modal,
+} from "~/libs/components/components.js";
+import {
+	useAppDispatch,
+	useAppForm,
+	useAppSelector,
+	useCallback,
+	useEffect,
+	useNavigate,
+} from "~/libs/hooks/hooks.js";
 import {
 	actions as formActions,
 	formCarParametersValidationSchema,
 } from "~/modules/form/forms.js";
+import { AppRoute } from "~/libs/enums/enums.js";
 type CardProps = {
 	onClose: () => void;
 	isOpen: boolean;
 };
 
-const CarReservationModal: React.FC<CardProps> = ({isOpen, onClose}) => {
+const CarReservationModal: React.FC<CardProps> = ({ isOpen, onClose }) => {
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const carData = useAppSelector((state) => state.forms.car);
 
-	const { control, errors, handleSubmit, reset, watch } = useAppForm<FormCar>({
+	const { control, errors, handleSubmit, reset } = useAppForm<FormCar>({
 		defaultValues: {
-			additionalInsurance: false,
-			childSeat: "",
-			ownDriver: false,
+			additionalInsurance: carData.additionalInsurance,
+			childSeat: carData.childSeat,
+			ownDriver: carData.ownDriver,
 		},
-		// validationSchema: formCarParametersValidationSchema,
+		validationSchema: formCarParametersValidationSchema,
 	});
+
+	useEffect(() => {
+		reset({
+			additionalInsurance: carData.additionalInsurance,
+			childSeat: carData.childSeat,
+			ownDriver: carData.ownDriver,
+		});
+	}, [carData, reset]);
 
 	const handleInputChange = useCallback(
 		(formData: FormCar): void => {
@@ -42,11 +66,9 @@ const CarReservationModal: React.FC<CardProps> = ({isOpen, onClose}) => {
 		(event: React.BaseSyntheticEvent): void => {
 			event.preventDefault();
 			handleSubmit(handleInputChange)(event);
-			onClose();
-				console.log(errors);
 			if (!Object.keys(errors).length) {
-
-				// Дополнительная логика при успешной отправке формы
+				onClose();
+				navigate(AppRoute.RESERVATION_INFROMATION);
 			}
 		},
 		[handleSubmit, handleInputChange, errors],

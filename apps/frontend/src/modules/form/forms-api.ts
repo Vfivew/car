@@ -1,8 +1,12 @@
-import { APIPath } from "~/libs/enums/enums.js";
+import { APIPath, ContentType } from "~/libs/enums/enums.js";
 import { BaseHTTPApi } from "~/libs/modules/api/api.js";
 import { type HTTP } from "~/libs/modules/http/http.js";
 import { type Storage } from "~/libs/modules/storage/storage.js";
-import { type FormResponseDto } from "~/modules/form/forms.js";
+import {
+	FormPrice,
+	type FormResponseDto,
+	type FormPriceRequestDto,
+} from "~/modules/form/forms.js";
 
 import { FormsApiPath } from "./libs/enums/enums.js";
 
@@ -21,13 +25,43 @@ class FormApi extends BaseHTTPApi {
 		const response = await this.load(
 			this.getFullEndpoint(FormsApiPath.ROOT, {}),
 			{
-				hasAuth: true,
+				hasAuth: false,
 				method: "GET",
 			},
 		);
 
 		return await response.json<FormResponseDto[]>();
 	}
+
+	public async getPrice(payload: FormPriceRequestDto): Promise<FormPrice> {
+		const response = await this.load(
+			this.getFullEndpoint(FormsApiPath.PRICE, {}),
+			{
+				contentType: ContentType.JSON,
+				hasAuth: false,
+				method: "POST",
+				payload: JSON.stringify(payload),
+			},
+		);
+
+		return await response.json<FormPrice>();
+	}
+
+	// public async forgotPassword(
+	// 	payload: AuthForgotPasswordRequestDto,
+	// ): Promise<boolean> {
+	// 	const response = await this.load(
+	// 		this.getFullEndpoint(AuthApiPath.FORGOT_PASSWORD, {}),
+	// 		{
+	// 			contentType: ContentType.JSON,
+	// 			hasAuth: false,
+	// 			method: "POST",
+	// 			payload: JSON.stringify(payload),
+	// 		},
+	// 	);
+
+	// 	return await response.json<boolean>();
+	// }
 }
 
 export { FormApi };

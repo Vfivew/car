@@ -37,7 +37,7 @@ const Modal: React.FC<Properties> = ({
 		isOpen && styles["active"],
 	);
 
-	useToggleScroll(isOpen);
+	// useToggleScroll(isOpen);
 
 	return (
 		<Portal>

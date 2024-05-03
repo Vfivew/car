@@ -3,6 +3,7 @@ export { getTruncatedContent } from "./get-truncated-content/get-truncated-conte
 export { getValidClassNames } from "./get-valid-class-names/get-valid-class-names.helper.js";
 export { getTomorrowDateString } from "./get-tomorrow-date-string/get-tomorrow-date-string.js";
 export { getDateToString } from "./get-date-to-string/get-date-to-string.js";
+export { getDays } from "./get-days/get-days.js"
 export {
 	checkIsDatePrecedesAnotherByOneDay,
 	checkIsThisYear,

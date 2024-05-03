@@ -6,7 +6,7 @@
 	--color-premium: #febe30;
 	--color-container-hover-border: #00000080;
 	--shadow-color: #00000026;
-	--color-text-100: #aeb4bb;
+
 	--color-text-400: #9f9e9e;
 	--color-text-500: #8c9198;
 	--color-text-600: #27282b;
@@ -30,6 +30,7 @@
 	--z-index-high: 1000;
 
 	--modal-container-background: #f9332db2;
+	--color-text-100: #aeb4bb;
 	--color-text-500:#7e7e7e;
 	--color-background: #f5f7f7;
 	--z-index-begin:1;

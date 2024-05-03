@@ -6,9 +6,10 @@ import { Button, Icon, Image } from "~/libs/components/components.js";
 type CardProps = {
 	car: CarResponseDto;
 	onSubmit: (car: CarResponseDto) => void;
+	onReset: () => void;
 };
 
-const Card: React.FC<CardProps> = ({ car, onSubmit }: CardProps) => {
+const Card: React.FC<CardProps> = ({ car, onSubmit, onReset }: CardProps) => {
 	const handleFormSubmit = (
 		event: React.MouseEvent<HTMLButtonElement>,
 	): void => {
@@ -76,6 +77,13 @@ const Card: React.FC<CardProps> = ({ car, onSubmit }: CardProps) => {
 						size="default"
 						type="submit"
 						onClick={handleFormSubmit}
+					/>
+					<Button
+						className={styles["button"]}
+						label="Reset"
+						onClick={onReset}
+						size="default"
+						style="secondary"
 					/>
 				</div>
 			</section>

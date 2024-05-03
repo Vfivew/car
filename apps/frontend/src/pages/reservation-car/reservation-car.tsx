@@ -1,4 +1,4 @@
-import { AppRoute, AppTitle } from "~/libs/enums/enums.js";
+import { AppTitle } from "~/libs/enums/enums.js";
 import {
 	useAppDispatch,
 	useAppForm,
@@ -10,7 +10,6 @@ import {
 } from "~/libs/hooks/hooks.js";
 
 import styles from "./styles.module.css";
-import { ReservationBanner } from "~/libs/components/components.js";
 import { FormCar, actions as formActions } from "~/modules/form/forms.js";
 import { CarResponseDto, actions as carsActions } from "~/modules/cars/cars.js";
 import { Card } from "./libs/components/card/card.js";
@@ -25,10 +24,11 @@ const ReservationCar: React.FC = () => {
 		void dispatch(carsActions.getAllCars());
 	}, [dispatch]);
 
-	const { handleSubmit } = useAppForm<FormCar>({
+	const { handleSubmit, reset } = useAppForm<FormCar>({
 		defaultValues: {
 			carId: null,
 			name: "",
+			image: "",
 		},
 	});
 
@@ -42,19 +42,26 @@ const ReservationCar: React.FC = () => {
 
 	const handleClose = useCallback(() => {
 		setIsOpen(false);
-		console.log('+++wdqdwq')
 	}, []);
+
+	const handleResetForm = useCallback(() => {
+		void dispatch(formActions.resetCarId());
+		reset();
+	}, [reset]);
 
 	return (
 		<div className={styles["container"]}>
-			<ReservationBanner />
 			<section className={styles["form-wrapper"]}>
 				<h2 className={styles["title"]}>Select your car</h2>
 				<form action="" className={styles["form"]}>
 					<ul className={styles["list"]}>
 						{cars.map((car) => (
 							<li key={car.id}>
-								<Card car={car} onSubmit={handleFormSubmit} />
+								<Card
+									car={car}
+									onSubmit={handleFormSubmit}
+									onReset={handleResetForm}
+								/>
 							</li>
 						))}
 					</ul>

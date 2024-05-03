@@ -14,9 +14,7 @@ import { Auth } from "~/pages/auth/auth.jsx";
 
 import { NotFound } from "./pages/not-found/not-found.js";
 import { Overview } from "./pages/overview/overview.js";
-import { Reservation } from "./pages/reservation/reservation.js";
-import { ReservationCar } from "./pages/reservation-car/reservation-car.js";
-
+import { Form } from "./pages/form/form.js";
 
 createRoot(document.querySelector("#root") as HTMLElement).render(
 	<StrictMode>
@@ -31,12 +29,16 @@ createRoot(document.querySelector("#root") as HTMLElement).render(
 								path: AppRoute.ROOT,
 							},
 							{
-								element: <Reservation />,
-								path: AppRoute.RESERVATION,
+								element: <Form />,
+								path: AppRoute.RESERVATION_DATE,
 							},
 							{
-								element: <ReservationCar />,
-								path: AppRoute.CAR,
+								element: <Form />,
+								path: AppRoute.RESERVATION_INFROMATION,
+							},
+							{
+								element: <Form />,
+								path: AppRoute.RESERVATION_CAR,
 							},
 							{
 								element: <Auth />,
