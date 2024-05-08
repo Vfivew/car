@@ -7,6 +7,8 @@ const ColumnName = {
 	IMAGE: "image",
 	NAME: "name",
 	RENT_PRICE: "rent_price",
+	CREATED_AT: "created_at",
+	UPDATED_AT: "updated_at",
 } as const;
 
 async function up(knex: Knex): Promise<void> {
@@ -15,6 +17,14 @@ async function up(knex: Knex): Promise<void> {
 		table.string(ColumnName.NAME).notNullable();
 		table.string(ColumnName.IMAGE).notNullable();
 		table.decimal(ColumnName.RENT_PRICE).notNullable();
+		table
+			.dateTime(ColumnName.CREATED_AT)
+			.notNullable()
+			.defaultTo(knex.fn.now());
+		table
+			.dateTime(ColumnName.UPDATED_AT)
+			.notNullable()
+			.defaultTo(knex.fn.now());
 	});
 }
 

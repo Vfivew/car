@@ -12,8 +12,9 @@ const ColumnName = {
 	NUMBER_OF_DOORS: "number_of_doors",
 	PANORAMIC_ROOF: "panoramic_roof",
 	PARKING_SENSOR: "parking_sensors",
-	REND_PRICE: "rent_price",
 	TRUNK_VOLUME: "trunk_volume",
+	CREATED_AT: "created_at",
+	UPDATED_AT: "updated_at",
 } as const;
 
 async function up(knex: Knex): Promise<void> {
@@ -28,6 +29,14 @@ async function up(knex: Knex): Promise<void> {
 		table.boolean(ColumnName.NAVIGATION_SYSTEM);
 		table.boolean(ColumnName.PANORAMIC_ROOF);
 		table.string(ColumnName.TRUNK_VOLUME);
+		table
+			.dateTime(ColumnName.CREATED_AT)
+			.notNullable()
+			.defaultTo(knex.fn.now());
+		table
+			.dateTime(ColumnName.UPDATED_AT)
+			.notNullable()
+			.defaultTo(knex.fn.now());
 	});
 }
 

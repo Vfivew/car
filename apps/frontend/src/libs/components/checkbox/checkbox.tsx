@@ -9,6 +9,8 @@ import { getValidClassNames } from "~/libs/helpers/helpers.js";
 import { useFormController } from "~/libs/hooks/hooks.js";
 
 import styles from "./styles.module.css";
+import { AppRoute } from "~/libs/enums/enums.js";
+import { ValueOf } from "~/libs/types/types.js";
 
 type Properties<T extends FieldValues> = {
 	className?: string | undefined;
@@ -16,6 +18,7 @@ type Properties<T extends FieldValues> = {
 	errors: FieldErrors<T>;
 	hasVisuallyHiddenLabel?: boolean;
 	isDisabled?: boolean | undefined;
+	to?: ValueOf<typeof AppRoute>;
 	label: string;
 	name: FieldPath<T>;
 };
@@ -27,6 +30,7 @@ const Checkbox = <T extends FieldValues>({
 	hasVisuallyHiddenLabel,
 	isDisabled,
 	label,
+	to,
 	name,
 }: Properties<T>): JSX.Element => {
 	const { field } = useFormController({ control, name });
@@ -45,7 +49,11 @@ const Checkbox = <T extends FieldValues>({
 
 	return (
 		<label className={styles["checkbox-container"]}>
-			<span className={labelClasses}>{label}</span>
+			{to ? (
+				<a href={to} className={labelClasses}>{label}</a>
+			) : (
+				<span className={labelClasses}>{label}</span>
+			)}
 			<input
 				{...field}
 				checked={Boolean(field.value)}

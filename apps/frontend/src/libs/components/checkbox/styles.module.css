@@ -2,11 +2,12 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-between;
 	user-select: none;
 }
 
 .checkbox-label {
+	font-size: var(--font-size-200);
 	font-weight: 500;
 	line-height: 16px;
 }
@@ -47,12 +48,12 @@
 .error {
 	position: absolute;
 	right: 0;
-	bottom: -14px;
+	bottom: -18px;
 	display: block;
 	width: 100%;
 	font-size: var(--font-size-100);
 	color: var(--color-error);
-	text-align: center;
+	text-align: right;
 }
 
 .error-input {

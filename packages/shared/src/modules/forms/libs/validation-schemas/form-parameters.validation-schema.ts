@@ -12,14 +12,17 @@ const formParameters = z
 	.object<FormParametersParametersValidationDto>({
 		office: z
 			.string()
+			.trim()
 			.min(1, { message: FormValidationMessage.INVALID_DATE })
 			.trim(),
 		startDate: z
 			.string()
+			.trim()
 			.min(1, { message: FormValidationMessage.INVALID_DATE })
 			.trim(),
 		returnDate: z
 			.string()
+			.trim()
 			.min(1, { message: FormValidationMessage.INVALID_OFFICE })
 			.trim(),
 	})

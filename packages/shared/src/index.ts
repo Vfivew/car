@@ -84,7 +84,12 @@ export {
 	type FormDate,
 	type FormRequestDto,
 	type FormResponseDto,
+	type FormPrice,
+	type FormCarAddons,
+	type FormPriceRequestDto,
 	FormsApiPath,
 	formParametersValidationSchema,
 	formCarParametersValidationSchema,
+	formInformationParametersValidationSchema,
+	formAllParametersValidationSchema,
 } from "./modules/forms/forms.js";

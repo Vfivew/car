@@ -1,9 +1,8 @@
 type FormCar = {
 	carId: number | null;
 	name: string;
-	childSeat: string | null;
-	ownDriver: boolean;
-	additionalInsurance: boolean;
+	image: string;
+	rentPrice: number;
 };
 
 export { type FormCar };

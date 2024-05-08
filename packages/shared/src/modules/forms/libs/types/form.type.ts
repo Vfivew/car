@@ -7,9 +7,7 @@ type Form = {
 	city?: string | null;
 	address?: string | null;
 	driverLicense?: string | null;
-	childSeat?: string | null;
-	ownDriver?: string | null;
-	additionalInsurance?: boolean;
+	isRullesAccepted: boolean;
 };
 
 export { type Form };

@@ -15,7 +15,6 @@ import {
 } from "./actions.js";
 
 type State = {
-	avatarUploadDataStatus: ValueOf<typeof DataStatus>;
 	dataStatus: ValueOf<typeof DataStatus>;
 	forgotPasswordStatus: ValueOf<typeof DataStatus>;
 	updateUserDataStatus: ValueOf<typeof DataStatus>;
@@ -23,7 +22,6 @@ type State = {
 };
 
 const initialState: State = {
-	avatarUploadDataStatus: DataStatus.IDLE,
 	dataStatus: DataStatus.IDLE,
 	forgotPasswordStatus: DataStatus.IDLE,
 	updateUserDataStatus: DataStatus.IDLE,

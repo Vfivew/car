@@ -4,19 +4,12 @@ import { type AsyncThunkConfig } from "~/libs/types/types.js";
 import {
 	FormPrice,
 	FormPriceRequestDto,
+	FormRequestDto,
 	type FormResponseDto,
 } from "~/modules/form/forms.js";
 
 import { formApi } from "../forms.js";
 import { name as sliceName } from "./form.slice.js";
-
-const getAllForms = createAsyncThunk<
-	FormResponseDto[],
-	undefined,
-	AsyncThunkConfig
->(`${sliceName}/get-forms`, async () => {
-	return await formApi.getAllForms();
-});
 
 // const forgotPassword = createAsyncThunk<
 // 	boolean,
@@ -28,6 +21,16 @@ const getAllForms = createAsyncThunk<
 // 	return await authApi.forgotPassword(payload);
 // });
 
+const createForm = createAsyncThunk<
+	any,
+	FormRequestDto,
+	AsyncThunkConfig
+>(`${sliceName}/create-form`, async (payload, { extra }) => {
+	const { formApi } = extra;
+
+	return await formApi.createForm(payload);
+});
+
 const getPrice = createAsyncThunk<
 	FormPrice,
 	FormPriceRequestDto,
@@ -38,4 +41,4 @@ const getPrice = createAsyncThunk<
 	return await formApi.getPrice(payload);
 });
 
-export { getAllForms, getPrice };
+export { createForm, getPrice };

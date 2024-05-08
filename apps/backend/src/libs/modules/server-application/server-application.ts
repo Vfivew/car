@@ -5,6 +5,7 @@ import { token } from "~/libs/modules/token/token.js";
 import { authController } from "~/modules/auth/auth.js";
 import { carController } from "~/modules/cars/cars.js";
 import { userController, userService } from "~/modules/users/users.js";
+import { formController } from "~/modules/form/forms.js";
 
 import { BaseServerApplication } from "./base-server-application.js";
 import { BaseServerApplicationApi } from "./base-server-application-api.js";
@@ -15,6 +16,7 @@ const apiV1 = new BaseServerApplicationApi(
 	...authController.routes,
 	...userController.routes,
 	...carController.routes,
+	...formController.routes,
 );
 const serverApplication = new BaseServerApplication({
 	apis: [apiV1],

@@ -1,10 +1,10 @@
-import { getAllForms, getPrice } from "./actions.js";
+import { createForm, getPrice } from "./actions.js";
 import { actions } from "./form.slice.js";
 
 const allActions = {
 	...actions,
 	getPrice,
-	getAllForms,
+	createForm,
 };
 
 export { reducer } from "./form.slice.js";

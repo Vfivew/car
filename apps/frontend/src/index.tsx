@@ -15,6 +15,7 @@ import { Auth } from "~/pages/auth/auth.jsx";
 import { NotFound } from "./pages/not-found/not-found.js";
 import { Overview } from "./pages/overview/overview.js";
 import { Form } from "./pages/form/form.js";
+import { Rules } from "./pages/rules/rules.js";
 
 createRoot(document.querySelector("#root") as HTMLElement).render(
 	<StrictMode>
@@ -55,6 +56,10 @@ createRoot(document.querySelector("#root") as HTMLElement).render(
 							{
 								element: <Auth />,
 								path: AppRoute.UPDATE_PASSWORD,
+							},
+							{
+								element: <Rules />,
+								path: AppRoute.RULES,
 							},
 						],
 						element: <App />,

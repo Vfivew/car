@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 type Properties = {
 	className?: string | undefined;
-	size: "large" | "small";
+	size: "large" | "small" | "micro";
 };
 
 const Loader: React.FC<Properties> = ({

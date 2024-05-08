@@ -6,8 +6,13 @@ export {
 	type FormDate,
 	type FormRequestDto,
 	type FormResponseDto,
+	type FormCarAddons,
+	type FormPriceRequestDto,
+	type FormPrice,
 } from "./libs/types/types.js";
 export {
 	formParameters as formParametersValidationSchema,
 	formCarParameters as formCarParametersValidationSchema,
+	formInformationParameters as formInformationParametersValidationSchema,
+	formAllParameters as formAllParametersValidationSchema,
 } from "./libs/validation-schemas/validation-schemas.js";

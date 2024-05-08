@@ -18,6 +18,7 @@ export {
 	type FormResponseDto,
 	type FormPriceRequestDto,
 	type FormPrice,
+	type FormCarAddons,
 } from "./libs/types/types.js";
 export { formApi };
 export {

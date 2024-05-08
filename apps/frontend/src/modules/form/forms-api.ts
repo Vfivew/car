@@ -6,6 +6,7 @@ import {
 	FormPrice,
 	type FormResponseDto,
 	type FormPriceRequestDto,
+	FormRequestDto,
 } from "~/modules/form/forms.js";
 
 import { FormsApiPath } from "./libs/enums/enums.js";
@@ -21,16 +22,18 @@ class FormApi extends BaseHTTPApi {
 		super({ baseUrl, http, path: APIPath.FORMS, storage });
 	}
 
-	public async getAllForms(): Promise<FormResponseDto[]> {
+	public async createForm(payload: FormRequestDto): Promise<any> {
 		const response = await this.load(
 			this.getFullEndpoint(FormsApiPath.ROOT, {}),
 			{
+				contentType: ContentType.JSON,
 				hasAuth: false,
-				method: "GET",
+				method: "POST",
+				payload: JSON.stringify(payload),
 			},
 		);
 
-		return await response.json<FormResponseDto[]>();
+		return await response.json<any>();
 	}
 
 	public async getPrice(payload: FormPriceRequestDto): Promise<FormPrice> {
@@ -47,21 +50,6 @@ class FormApi extends BaseHTTPApi {
 		return await response.json<FormPrice>();
 	}
 
-	// public async forgotPassword(
-	// 	payload: AuthForgotPasswordRequestDto,
-	// ): Promise<boolean> {
-	// 	const response = await this.load(
-	// 		this.getFullEndpoint(AuthApiPath.FORGOT_PASSWORD, {}),
-	// 		{
-	// 			contentType: ContentType.JSON,
-	// 			hasAuth: false,
-	// 			method: "POST",
-	// 			payload: JSON.stringify(payload),
-	// 		},
-	// 	);
-
-	// 	return await response.json<boolean>();
-	// }
 }
 
 export { FormApi };

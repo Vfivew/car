@@ -10,6 +10,7 @@ const AppRoute = {
 	RESERVATION_CAR: "/reservation-car",
 	FORM: "/form",
 	RESERVATION_INFROMATION: "/reservation-information",
+	RULES: "/rules"
 } as const;
 
 export { AppRoute };

@@ -4,7 +4,7 @@ import { AppRoute } from "~/libs/enums/enums.js";
 import { useAppSelector } from "~/libs/hooks/hooks.js";
 
 const ReservationBanner: React.FC = () => {
-	const { date, car, form } = useAppSelector((state) => state.forms);
+	const { date, car, form, addons } = useAppSelector((state) => state.forms);
 	const isFinishDisabled = date.startDate && date.returnDate && car.name;
 
 	return (
@@ -43,14 +43,18 @@ const ReservationBanner: React.FC = () => {
 								<p>{car.name ? car.name : "-- --"}</p>
 								<ul>
 									Addons:
-									<li>Child seat: {car.childSeat ? car.childSeat : "none"}</li>
-									<li>{car.ownDriver && "Own Driver"}</li>
-									<li>{car.additionalInsurance && "Additional insurance"}</li>
+									<li>Child seat: {addons.childSeat}</li>
+									<li>{addons.ownDriver && "Own Driver"}</li>
+									<li>
+										{addons.additionalInsurance && "Additional insurance"}
+									</li>
 								</ul>
 							</div>
 						</Link>
 					</li>
-					<li className={`${styles["item"]} ${!isFinishDisabled && styles["disabled"]}`}>
+					<li
+						className={`${styles["item"]} ${!isFinishDisabled && styles["disabled"]}`}
+					>
 						<Link
 							to={AppRoute.RESERVATION_INFROMATION}
 							isDisabled={!isFinishDisabled}

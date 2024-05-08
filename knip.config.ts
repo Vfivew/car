@@ -8,7 +8,7 @@ const config: KnipConfig = {
 			entry: ["./dangerfile.ts"],
 		},
 		"apps/backend": {
-			entry: ["src/index.ts", "src/db/migrations/*.ts", "knexfile.ts"],
+			entry: ["src/index.ts", "src/db/migrations/*.ts","src/db/seeds/*.ts", "knexfile.ts"],
 			ignoreDependencies: ["pg"],
 		},
 		"apps/frontend": {

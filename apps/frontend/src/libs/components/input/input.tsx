@@ -1,4 +1,5 @@
 import {
+	UseFormRegister,
 	type Control,
 	type FieldErrors,
 	type FieldPath,
@@ -19,7 +20,7 @@ type Properties<T extends FieldValues> = {
 	errors: FieldErrors<T>;
 	hasVisuallyHiddenLabel?: boolean;
 	iconName?: IconName;
-	inputMode?: "email" | "text";
+	inputMode?: "email" | "text" | "numeric";
 	label: string;
 	name: FieldPath<T>;
 	placeholder?: string;
@@ -27,6 +28,7 @@ type Properties<T extends FieldValues> = {
 	type?: "email" | "password" | "text" | "date" | "number";
 	minDate?: string;
 	maxDate?: string;
+	register?: UseFormRegister<T>;
 };
 
 const Input = <T extends FieldValues>({
@@ -44,6 +46,7 @@ const Input = <T extends FieldValues>({
 	type = "text",
 	minDate = "",
 	maxDate = "",
+	register,
 }: Properties<T>): JSX.Element => {
 	const { field } = useFormController({ control, name });
 
@@ -89,6 +92,7 @@ const Input = <T extends FieldValues>({
 					type={type}
 					min={type === "date" ? minDate : undefined}
 					max={type === "date" ? maxDate : undefined}
+					{...(register && register(name, { valueAsNumber: true }))}
 				/>
 			)}
 			{hasError && <span className={styles["error"]}>{error as string}</span>}

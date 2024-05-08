@@ -6,4 +6,5 @@ export {
 	type FormPrice,
 	type FormPriceRequestDto,
 	type FormResponseDto,
+	type FormCarAddons,
 } from "@car/shared";
