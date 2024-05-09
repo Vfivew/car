@@ -6,7 +6,7 @@ const AppTitle = {
 	SIGN_IN: "Sign In",
 	SIGN_UP: "Sign Up",
 	UPDATE_PASSWORD: "Update password",
-	ABOUT_US:"About us"
+	ABOUT_US: "About us",
 } as const;
 
 export { AppTitle };

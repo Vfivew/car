@@ -50,7 +50,9 @@ const Checkbox = <T extends FieldValues>({
 	return (
 		<label className={styles["checkbox-container"]}>
 			{to ? (
-				<a href={to} className={labelClasses}>{label}</a>
+				<a href={to} className={labelClasses}>
+					{label}
+				</a>
 			) : (
 				<span className={labelClasses}>{label}</span>
 			)}

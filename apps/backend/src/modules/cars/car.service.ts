@@ -57,7 +57,7 @@ class CarService implements Service {
 	public async findAll(): Promise<CarResponseDto[]> {
 		const cars = await this.carRepository.findAll();
 
-		return cars.map((car) => car.toObject())
+		return cars.map((car) => car.toObject());
 	}
 
 	public async findById(carId: number): Promise<CarResponseDto | null> {

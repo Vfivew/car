@@ -1,8 +1,8 @@
-import { ValueOf } from "~/libs/types/types.js";
-import { Button, Icon, Link } from "../components.js";
+import { type AppRoute } from "~/libs/enums/enums.js";
 import { useInView } from "~/libs/hooks/hooks.js";
-import { AppRoute } from "~/libs/enums/enums.js";
+import { type ValueOf } from "~/libs/types/types.js";
 
+import { Button, Icon, Link } from "../components.js";
 import styles from "./styles.module.css";
 
 const AboutUs: React.FC = () => {
@@ -28,10 +28,10 @@ const AboutUs: React.FC = () => {
 					</p>
 					<Button
 						className={styles["link"]}
+						href="/"
 						label="OUR COMPANY"
 						size="default"
 						style="primary"
-						href="/"
 					/>
 				</section>
 				<div
@@ -45,19 +45,19 @@ const AboutUs: React.FC = () => {
 					HAVE A QUESTIONS? FEEL FREE TO ASK...
 				</h2>
 				<Link
-					to={"tel:+380999999999" as ValueOf<typeof AppRoute>}
 					className={styles["link"]}
+					to={"tel:+380999999999" as ValueOf<typeof AppRoute>}
 				>
 					<Icon className={styles["phone"]} name="phone" />
 					+380 (99) 99 99 999
 				</Link>
 				<Button
 					className={styles["button"]}
+					href="/"
 					iconName="letter"
 					label="Feedback"
 					size="default"
 					style="secondary"
-					href="/"
 				/>
 			</section>
 		</div>

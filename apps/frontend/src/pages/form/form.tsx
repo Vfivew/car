@@ -7,10 +7,12 @@ import {
 	useState,
 } from "~/libs/hooks/hooks.js";
 
-import { ReservationInformationModal } from "./components/modal/reservation-information-modal.js";
-import { ReservationDate } from "./components/reservation/reservation-date.js";
-import { ReservationCar } from "./components/reservation-car/reservation-car.js";
-import { ReservationInformation } from "./components/reservation-information/reservation-information.js";
+import {
+	ReservationCar,
+	ReservationDate,
+	ReservationInformation,
+	ReservationInformationModal,
+} from "./components/components.js";
 import styles from "./styles.module.css";
 
 const Form: React.FC = () => {

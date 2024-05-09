@@ -11,7 +11,6 @@ export {
 export { ValidationError } from "./libs/exceptions/exceptions.js";
 export {
 	checkIsDatePrecedesAnotherByOneDay,
-	checkIsThisYear,
 	checkIsToday,
 	checkIsYesterday,
 	configureString,

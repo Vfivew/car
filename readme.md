@@ -1,4 +1,3 @@
-
 ## 1. Requirements
 
 - [NodeJS](https://nodejs.org/en) (18.x.x);

@@ -21,15 +21,14 @@ import { name as sliceName } from "./form.slice.js";
 // 	return await authApi.forgotPassword(payload);
 // });
 
-const createForm = createAsyncThunk<
-	any,
-	FormRequestDto,
-	AsyncThunkConfig
->(`${sliceName}/create-form`, async (payload, { extra }) => {
-	const { formApi } = extra;
+const createForm = createAsyncThunk<any, FormRequestDto, AsyncThunkConfig>(
+	`${sliceName}/create-form`,
+	async (payload, { extra }) => {
+		const { formApi } = extra;
 
-	return await formApi.createForm(payload);
-});
+		return await formApi.createForm(payload);
+	},
+);
 
 const getPrice = createAsyncThunk<
 	FormPrice,

@@ -26,32 +26,38 @@ const carSeedData = [
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]: "https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 ];
 
@@ -125,8 +131,8 @@ const carDetailsSeedData = [
 ];
 
 async function seed(knex: Knex): Promise<void> {
-    await knex(TABLE_NAME_CARS).insert(carSeedData);
-    await knex(TABLE_NAME_CAR_DETAILS).insert(carDetailsSeedData);
+	await knex(TABLE_NAME_CARS).insert(carSeedData);
+	await knex(TABLE_NAME_CAR_DETAILS).insert(carDetailsSeedData);
 }
 
 export { seed };

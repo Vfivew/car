@@ -37,6 +37,7 @@ const Image: React.FC<Properties> = ({
 		<img
 			alt={alt}
 			className={getValidClassNames(styles["image"], styles[shape], className)}
+			decoding="async"
 			height={height}
 			onError={handleImageError}
 			src={isImageLoaded ? imageSource : defaultSrc}

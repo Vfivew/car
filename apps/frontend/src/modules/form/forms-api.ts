@@ -49,7 +49,6 @@ class FormApi extends BaseHTTPApi {
 
 		return await response.json<FormPrice>();
 	}
-
 }
 
 export { FormApi };

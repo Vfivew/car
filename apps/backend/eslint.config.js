@@ -12,7 +12,6 @@ const ignoresConfig = {
 const overridesConfigs = [
 	{
 		files: ["knexfile.ts"],
-
 	},
 	{
 		files: ["src/db/migrations/**/*.ts"],

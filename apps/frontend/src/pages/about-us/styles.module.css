@@ -1,3 +1,5 @@
+@import url("~/assets/css/media.css");
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -18,4 +20,10 @@
 	font-size: var(--font-size-300);
 	font-weight: bold;
 	color: var(--dark-red-shadow);
+}
+
+@media screen and (--small-screen) {
+	.container {
+		gap: 20px;
+	}
 }

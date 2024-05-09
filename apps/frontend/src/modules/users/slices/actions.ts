@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { NotificationMessage } from "~/libs/modules/notification/notification.js";
-import {
-	type AsyncThunkConfig,
-} from "~/libs/types/types.js";
+import { type AsyncThunkConfig } from "~/libs/types/types.js";
 import {
 	type UserAuthResponseDto,
 	type UserProfileRequestDto,
@@ -25,15 +23,14 @@ const updateProfile = createAsyncThunk<
 	return user;
 });
 
-const getAll = createAsyncThunk<
-	UserAuthResponseDto,
-	{},
-	AsyncThunkConfig
->(`${sliceName}/get-all`, async (query, { extra }) => {
-	const { userApi } = extra;
+const getAll = createAsyncThunk<UserAuthResponseDto, {}, AsyncThunkConfig>(
+	`${sliceName}/get-all`,
+	async (query, { extra }) => {
+		const { userApi } = extra;
 
-	return await userApi.getAll(query);
-});
+		return await userApi.getAll(query);
+	},
+);
 
 const getById = createAsyncThunk<UserAuthResponseDto, number, AsyncThunkConfig>(
 	`${sliceName}/get-by-id`,

@@ -86,7 +86,8 @@ const Footer: React.FC = () => {
 			<div className={styles["footer-copyright"]}>
 				<p className={styles["copyright-content"]}>
 					Copyright © 2024.{" "}
-					<span className={styles["selected-text"]}>By me </span> - free template
+					<span className={styles["selected-text"]}>By me </span> - free
+					template
 				</p>
 			</div>
 		</footer>

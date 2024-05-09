@@ -7,9 +7,7 @@ import {
 import { HTTPCode } from "~/libs/modules/http/http.js";
 import { type Logger } from "~/libs/modules/logger/logger.js";
 import { type UserService } from "~/modules/users/user.service.js";
-import {
-	type UserProfileRequestDto,
-} from "~/modules/users/users.js";
+import { type UserProfileRequestDto } from "~/modules/users/users.js";
 
 import { UsersApiPath } from "./libs/enums/enums.js";
 import { type UserGetByIdRequestDto } from "./libs/types/types.js";

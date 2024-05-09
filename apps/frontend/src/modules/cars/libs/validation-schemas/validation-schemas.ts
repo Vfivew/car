@@ -1,3 +1,1 @@
-export {
-	carIdParametersValidationSchema,
-} from "@car/shared";
+export { carIdParametersValidationSchema } from "@car/shared";

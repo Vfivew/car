@@ -25,7 +25,7 @@ body {
 }
 
 .slick-slider .slick-arrow::before {
-	color:var(--dark-red-shadow);
+	color: var(--dark-red-shadow);
 	opacity: 1;
 }
 

@@ -57,7 +57,7 @@ class FormController extends BaseController {
 		}>,
 	): Promise<APIHandlerResponse> {
 		const payload = options.body;
-		console.log(options.body)
+		console.log(options.body);
 		return {
 			payload: await this.formService.create(payload),
 			status: HTTPCode.OK,

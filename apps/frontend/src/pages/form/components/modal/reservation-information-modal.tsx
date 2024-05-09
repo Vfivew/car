@@ -3,15 +3,15 @@ import { AppRoute } from "~/libs/enums/enums.js";
 
 import styles from "./styles.module.css";
 
-type CardProperties = {
+type Properties = {
 	isOpen: boolean;
 	onClose: () => void;
 };
 
-const ReservationInformationModal: React.FC<CardProperties> = ({
+const ReservationInformationModal: React.FC<Properties> = ({
 	isOpen,
 	onClose,
-}) => {
+}: Properties) => {
 	return (
 		<Modal
 			className={styles["edit-modal"]}

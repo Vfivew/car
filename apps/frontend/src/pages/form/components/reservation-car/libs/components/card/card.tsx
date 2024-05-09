@@ -11,11 +11,7 @@ type Properties = {
 	onSubmit: (car: CarResponseDto) => void;
 };
 
-const Card: React.FC<Properties> = ({
-	car,
-	onReset,
-	onSubmit,
-}: Properties) => {
+const Card: React.FC<Properties> = ({ car, onReset, onSubmit }: Properties) => {
 	const handleFormSubmit = useCallback(
 		(event: React.MouseEvent<HTMLButtonElement>): void => {
 			event.preventDefault();

@@ -5,7 +5,6 @@ export { useAppTitle } from "./use-app-titile/use-app-title.hooks.js";
 export { useHandleClickOutside } from "./use-handle-click-outside/use-handle-click-outside.hook.js";
 export { useToggleScroll } from "./use-toggle-scroll/use-toggle-scroll.hook.js";
 export {
-	forwardRef,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -17,6 +16,5 @@ export { useInView } from "react-intersection-observer";
 export {
 	useLocation,
 	useNavigate,
-	useParams,
 	useSearchParams,
 } from "react-router-dom";

@@ -57,12 +57,12 @@
 	background-color: var(--main-white);
 }
 
-.price-container{
+.price-container {
 	display: flex;
 	gap: 6px;
 }
 
-.price-loader{
+.price-loader {
 	margin: 0;
 }
 

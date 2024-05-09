@@ -1,0 +1,18 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 20px;
+}
+
+.title {
+	font-size: var(--font-size-600);
+	font-weight: bold;
+	color: var(--dark-red-shadow);
+	text-transform: uppercase;
+}
+
+.title::first-letter {
+	color: var(--main-color);
+}

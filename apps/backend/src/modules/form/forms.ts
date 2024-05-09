@@ -22,4 +22,8 @@ export {
 	type FormResponseDto,
 	type FormRequestDto,
 } from "./libs/types/types.js";
-export { formCarParametersValidationSchema, formParametersValidationSchema, formInformationParametersValidationSchema } from "./libs/validation-schemas/validation-schemas.js";
+export {
+	formCarParametersValidationSchema,
+	formParametersValidationSchema,
+	formInformationParametersValidationSchema,
+} from "./libs/validation-schemas/validation-schemas.js";

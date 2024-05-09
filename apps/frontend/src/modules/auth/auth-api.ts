@@ -52,7 +52,7 @@ class AuthApi extends BaseHTTPApi {
 				method: "GET",
 			},
 		);
-		
+
 		return await response.json<UserAuthResponseDto | null>();
 	}
 

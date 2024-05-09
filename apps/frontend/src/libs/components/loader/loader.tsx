@@ -7,10 +7,7 @@ type Properties = {
 	size: "large" | "small" | "micro";
 };
 
-const Loader: React.FC<Properties> = ({
-	className,
-	size,
-}: Properties) => {
+const Loader: React.FC<Properties> = ({ className, size }: Properties) => {
 	return (
 		<span
 			className={getValidClassNames(styles["loader"], className, styles[size])}
