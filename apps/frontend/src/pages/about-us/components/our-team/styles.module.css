@@ -7,6 +7,7 @@
 }
 
 .title {
+	position: relative;
 	font-size: var(--font-size-600);
 	font-weight: bold;
 	color: var(--dark-red-shadow);
@@ -15,4 +16,32 @@
 
 .title::first-letter {
 	color: var(--main-color);
+}
+
+.title::before {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	display: inline-block;
+	width: 50%;
+	height: 8px;
+	vertical-align: top;
+	content: "";
+	background-color: var(--main-color);
+	border-radius: 2px;
+	transform: skew(-40deg, 0deg);
+}
+
+.title::after {
+	position: absolute;
+	top: 100%;
+	left: 52%;
+	display: inline-block;
+	width: 25%;
+	height: 5px;
+	vertical-align: top;
+	content: "";
+	background-color: var(--dark-red-shadow);
+	border-radius: 2px;
+	transform: skew(-40deg, 0deg);
 }
