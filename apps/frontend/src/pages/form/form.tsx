@@ -1,22 +1,27 @@
-import { AppRoute } from "~/libs/enums/enums.js";
-import { useCallback, useLocation, useNavigate, useState } from "~/libs/hooks/hooks.js";
-import styles from "./styles.module.css";
-
 import { ReservationBanner } from "~/libs/components/components.js";
-import { ReservationInformation } from "./components/reservation-information/reservation-information.js";
-import { ReservationInformationModal } from "./modal/reservation-information-modal.js";
+import { AppRoute } from "~/libs/enums/enums.js";
+import {
+	useCallback,
+	useLocation,
+	useNavigate,
+	useState,
+} from "~/libs/hooks/hooks.js";
+
+import { ReservationInformationModal } from "./components/modal/reservation-information-modal.js";
 import { ReservationDate } from "./components/reservation/reservation-date.js";
 import { ReservationCar } from "./components/reservation-car/reservation-car.js";
+import { ReservationInformation } from "./components/reservation-information/reservation-information.js";
+import styles from "./styles.module.css";
 
 const Form: React.FC = () => {
 	const { pathname } = useLocation();
 	const navigate = useNavigate();
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	const handleClose = useCallback(() => {
 		setIsOpen(false);
 		navigate(AppRoute.ROOT);
-	}, []);
+	}, [navigate]);
 
 	const handleOpen = useCallback(() => {
 		setIsOpen(true);

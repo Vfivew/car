@@ -1,11 +1,9 @@
-import { FormCar } from "./form-car.type.js";
-
 type FormPriceRequestDto = {
-	days: number;
-	price: number;
-	childSeat: number;
 	additionalInsurance: boolean;
-	ownDriver:boolean
+	childSeat: number;
+	days: number;
+	ownDriver: boolean;
+	price: number;
 };
 
 export { type FormPriceRequestDto };

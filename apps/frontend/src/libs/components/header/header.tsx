@@ -6,22 +6,22 @@ import {
 	actions as authActions,
 } from "~/modules/auth/auth.js";
 
-import { Image } from "../image/image.js";
 import { Button } from "../button/button.js";
+import { Loader } from "../components.js";
+import { Image } from "../image/image.js";
 import { Link } from "../link/link.js";
 import styles from "./styles.module.css";
-import { Loader } from "../components.js";
 
 type Properties = {
+	isLoading: boolean;
 	menuItems: MenuItem[];
 	user: UserAuthResponseDto | null;
-	isLoading: boolean;
 };
 
 const Header: React.FC<Properties> = ({
+	isLoading,
 	menuItems,
 	user,
-	isLoading,
 }: Properties) => {
 	const dispatch = useAppDispatch();
 	const [isBurgerOpen, setIsBurgerOpen] = useState<boolean>(false);

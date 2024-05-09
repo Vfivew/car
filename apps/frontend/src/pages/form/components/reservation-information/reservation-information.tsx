@@ -1,14 +1,3 @@
-import { AppRoute, AppTitle, DataStatus } from "~/libs/enums/enums.js";
-import {
-	useAppDispatch,
-	useAppForm,
-	useAppSelector,
-	useAppTitle,
-	useCallback,
-	useEffect,
-} from "~/libs/hooks/hooks.js";
-
-import styles from "./styles.module.css";
 import {
 	Button,
 	Checkbox,
@@ -17,20 +6,36 @@ import {
 	Loader,
 	Navigate,
 } from "~/libs/components/components.js";
+import { AppRoute, AppTitle, DataStatus } from "~/libs/enums/enums.js";
+import { getDays } from "~/libs/helpers/helpers.js";
 import {
-	Form,
+	useAppDispatch,
+	useAppForm,
+	useAppSelector,
+	useAppTitle,
+	useCallback,
+	useEffect,
+} from "~/libs/hooks/hooks.js";
+import {
+	type Form,
+	type FormPriceRequestDto,
 	actions as formActions,
-	FormPriceRequestDto,
 	formInformationParametersValidationSchema,
 } from "~/modules/form/forms.js";
-import { getDays } from "~/libs/helpers/helpers.js";
 
-const ReservationInformation: React.FC<{ onOpenModal: () => void }> = ({
+import { ARRAY_LENGHT } from "../libs/constants/array-length.constant.js";
+import styles from "./styles.module.css";
+
+type Properties = {
+	onOpenModal: () => void;
+};
+
+const ReservationInformation: React.FC<Properties> = ({
 	onOpenModal,
-}) => {
+}: Properties) => {
 	useAppTitle(AppTitle.RESERVATION);
 	const dispatch = useAppDispatch();
-	const { date, car, price, addons } = useAppSelector((state) => state.forms);
+	const { addons, car, date, price } = useAppSelector((state) => state.forms);
 	const { user } = useAppSelector((state) => state.auth);
 	const days = getDays(date.startDate, date.returnDate);
 	const isFinishDataForm = date.startDate && date.returnDate;
@@ -39,36 +44,37 @@ const ReservationInformation: React.FC<{ onOpenModal: () => void }> = ({
 	});
 	const isPriceLoading = priceDataStatus === DataStatus.PENDING;
 
-	const { control, errors, handleSubmit, reset, getValues } = useAppForm<Form>({
+	const { control, errors, getValues, handleSubmit, reset } = useAppForm<Form>({
 		defaultValues: {
+			address: "",
+			city: "",
+			country: "",
+			driverLicense: "",
+			email: user ? user.email : "",
 			firstName: user ? user.firstName : "",
+			isRullesAccepted: false,
 			lastName: user ? user.lastName : "",
 			phone: user?.phoneNumber ?? "",
-			country: "",
-			email: user ? user.email : "",
-			city: "",
-			address: "",
-			driverLicense: "",
-			isRullesAccepted: false,
 		},
-		// validationSchema: formInformationParametersValidationSchema,
+		validationSchema: formInformationParametersValidationSchema,
 	});
 
 	const handleInputChange = useCallback(
 		(formData: Form): void => {
 			void dispatch(
 				formActions.updateDate({
-					firstName: formData.firstName,
-					lastName: formData.lastName,
-					phone: formData.phone,
+					address: formData.address,
+					city: formData.city,
 					country: formData.country,
 					driverLicense: formData.driverLicense,
 					email: formData.email,
-					city: formData.city,
-					address: formData.address,
+					firstName: formData.firstName,
+					lastName: formData.lastName,
+					phone: formData.phone,
 				}),
 			);
-			if (!Object.keys(errors).length) {
+
+			if (Object.keys(errors).length === ARRAY_LENGHT.EMPTY) {
 				const payload = {
 					...getValues(),
 					...date,
@@ -76,36 +82,35 @@ const ReservationInformation: React.FC<{ onOpenModal: () => void }> = ({
 					...addons,
 					...price,
 				};
-				console.log(payload);
 				void dispatch(formActions.createForm(payload));
 				onOpenModal();
 			}
 		},
-		[dispatch],
+		[addons, car, date, dispatch, errors, getValues, onOpenModal, price],
 	);
 
 	const handleFormSubmit = useCallback(
-		async (event_: React.BaseSyntheticEvent): Promise<void> => {
-			await handleSubmit(handleInputChange)(event_);
+		(event_: React.BaseSyntheticEvent): void => {
+			void handleSubmit(handleInputChange)(event_);
 		},
-		[handleSubmit, handleInputChange, errors],
+		[handleSubmit, handleInputChange],
 	);
 
 	const handleResetForm = useCallback(() => {
 		void dispatch(formActions.resetForm());
 		reset();
-	}, [reset]);
+	}, [dispatch, reset]);
 
 	useEffect(() => {
 		const payload: FormPriceRequestDto = {
-			days: days,
-			price: car.rentPrice,
-			childSeat: addons.childSeat,
 			additionalInsurance: addons.additionalInsurance,
+			childSeat: addons.childSeat,
+			days,
 			ownDriver: addons.ownDriver,
+			price: car.rentPrice,
 		};
 		void dispatch(formActions.getPrice(payload));
-	}, [dispatch, date, car, addons]);
+	}, [dispatch, date, car, addons, days]);
 
 	if (!isFinishDataForm) {
 		return <Navigate replace to={AppRoute.RESERVATION_DATE} />;
@@ -125,7 +130,7 @@ const ReservationInformation: React.FC<{ onOpenModal: () => void }> = ({
 							{isPriceLoading ? (
 								<div className={styles["price-container"]}>
 									<p>Price: </p>
-									<Loader size={"micro"} className={styles["price-loader"]} />
+									<Loader className={styles["price-loader"]} size="micro" />
 								</div>
 							) : (
 								<div className={styles["price-container"]}>
@@ -201,12 +206,12 @@ const ReservationInformation: React.FC<{ onOpenModal: () => void }> = ({
 							type="text"
 						/>
 						<Checkbox
+							className={styles["checkbox"]}
 							control={control}
 							errors={errors}
-							className={styles["checkbox"]}
-							to={AppRoute.RULES}
 							label="I have read and agree to the website terms and conditions *"
-							name={"isRullesAccepted"}
+							name="isRullesAccepted"
+							to={AppRoute.RULES}
 						/>
 						<div className={styles["btn-wrapper"]}>
 							<Button

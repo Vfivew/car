@@ -1,7 +1,7 @@
 const FormsApiPath = {
 	$ID: "/:id",
-	ROOT: "/",
 	PRICE: "/price",
+	ROOT: "/",
 } as const;
 
 export { FormsApiPath };

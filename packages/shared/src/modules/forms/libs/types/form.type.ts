@@ -1,13 +1,13 @@
 type Form = {
+	address?: null | string;
+	city?: null | string;
+	country?: null | string;
+	driverLicense?: null | string;
+	email: string;
 	firstName: string;
+	isRullesAccepted: boolean;
 	lastName: string;
 	phone: string;
-	email: string;
-	country?: string | null;
-	city?: string | null;
-	address?: string | null;
-	driverLicense?: string | null;
-	isRullesAccepted: boolean;
 };
 
 export { type Form };

@@ -1,3 +1,5 @@
+import { AppRoute } from "~/libs/enums/app-route.enum.js";
+
 import { Button } from "../button/button.js";
 import styles from "./styles.module.css";
 
@@ -17,6 +19,7 @@ const GreetingBanner: React.FC = () => {
 				<div className={styles["button-wrapper"]}>
 					<Button
 						className={styles["button"]}
+						href={AppRoute.ABOUT_US}
 						iconName="arrowNext"
 						label="Learn more"
 						size="default"
@@ -24,6 +27,7 @@ const GreetingBanner: React.FC = () => {
 					/>
 					<Button
 						className={styles["button"]}
+						href={AppRoute.RESERVATION_DATE}
 						iconName="checked"
 						label="Book ride"
 						size="default"

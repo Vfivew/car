@@ -1,23 +1,24 @@
 import { z } from "zod";
-import { FormValidationMessage } from "../enums/enums.js";
+
+import { FormValidationMessage, FormValidationRule } from "../enums/enums.js";
 
 type CarValidationDto = {
-  childSeat: z.ZodNumber;
-  additionalInsurance: z.ZodBoolean;
-  ownDriver: z.ZodBoolean;
+	additionalInsurance: z.ZodBoolean;
+	childSeat: z.ZodNumber;
+	ownDriver: z.ZodBoolean;
 };
 
 const formCarParameters = z
 	.object<CarValidationDto>({
+		additionalInsurance: z.boolean(),
 		childSeat: z
 			.number()
-			.min(0, {
+			.min(FormValidationRule.CHILD_SEAT_MINIMUM_LENGHT, {
 				message: FormValidationMessage.INVALID_NUMBER,
 			})
-			.max(3, {
+			.max(FormValidationRule.CHILD_SEAT_MAXIMUM_LENGHT, {
 				message: FormValidationMessage.INVALID_NUMBER,
 			}),
-		additionalInsurance: z.boolean(),
 		ownDriver: z.boolean(),
 	})
 	.required();

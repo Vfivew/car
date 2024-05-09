@@ -1,9 +1,9 @@
-import { FormCarAddons } from "./form-car-addons.type.js";
-import { FormCar} from "./form-car.type.js";
-import { FormDate } from "./form-date.type.js";
-import { FormPrice } from "./form-price.type.js";
-import { Form } from "./form.type.js";
+import { type Form } from "./form.type.js";
+import { type FormCar } from "./form-car.type.js";
+import { type FormCarAddons } from "./form-car-addons.type.js";
+import { type FormDate } from "./form-date.type.js";
+import { type FormPrice } from "./form-price.type.js";
 
 type FormRequestDto = FormDate & FormCar & FormCarAddons & Form & FormPrice;
 
-export { FormRequestDto };
+export { type FormRequestDto };

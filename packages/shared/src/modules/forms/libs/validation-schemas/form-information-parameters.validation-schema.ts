@@ -1,20 +1,66 @@
 import { z } from "zod";
+
 import { FormValidationMessage, FormValidationRule } from "../enums/enums.js";
 
 type FormInformationValidationDto = {
+	address?: z.ZodString;
+	city?: z.ZodString;
+	country?: z.ZodString;
+	driverLicense?: z.ZodString;
 	email: z.ZodString;
 	firstName: z.ZodString;
+	isRullesAccepted?: z.ZodLiteral<true>;
 	lastName: z.ZodString;
 	phone: z.ZodString;
-	country?: z.ZodString;
-	city?: z.ZodString;
-	address?: z.ZodString;
-	driverLicense?: z.ZodString;
-	isRullesAccepted?: z.ZodLiteral<true>;
 };
 
 const formInformationParameters = z
 	.object<FormInformationValidationDto>({
+		address: z
+			.string()
+			.trim()
+			.regex(/^[\s\w'-]*$/, {
+				message: FormValidationMessage.INVALID_CHARACTERS,
+			})
+			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
+				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
+			}),
+		city: z
+			.string()
+			.trim()
+			.regex(/^['A-Za-z-]*$/, {
+				message: FormValidationMessage.INVALID_CHARACTERS,
+			})
+			.regex(/^(?!.*['-]{2})['A-Za-z-]*$/, {
+				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
+			})
+			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
+				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
+			}),
+		country: z
+			.string()
+			.trim()
+			.regex(/^['A-Za-z-]*$/, {
+				message: FormValidationMessage.INVALID_CHARACTERS,
+			})
+			.regex(/^(?!.*['-]{2})['A-Za-z-]*$/, {
+				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
+			})
+			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
+				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
+			}),
+		driverLicense: z
+			.string()
+			.trim()
+			.regex(/^(?!['-])(?!.*['-]$)[\w-]*$/, {
+				message: FormValidationMessage.INVALID_CHARACTERS,
+			})
+			.regex(/^(?!.*['-]{2})[\w-]*$/, {
+				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
+			})
+			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
+				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
+			}),
 		email: z
 			.string()
 			.trim()
@@ -82,6 +128,9 @@ const formInformationParameters = z
 			.max(FormValidationRule.FIRST_NAME_MAXIMUM_LENGTH, {
 				message: FormValidationMessage.FIRST_NAME_MAXIMUM_LENGTH,
 			}),
+		isRullesAccepted: z.literal(true, {
+			errorMap: () => ({ message: "Remember must be ticked" }),
+		}),
 		lastName: z
 			.string()
 			.trim()
@@ -112,57 +161,9 @@ const formInformationParameters = z
 		phone: z
 			.string()
 			.trim()
-			.regex(/^\+[0-9]{3}[0-9]{9}$/, {
+			.regex(/^\+\d{12}$/, {
 				message: FormValidationMessage.INVALID_PHONE_NUMBER,
 			}),
-		country: z
-			.string()
-			.trim()
-			.regex(/^['A-Za-z-]*$/, {
-				message: FormValidationMessage.INVALID_CHARACTERS,
-			})
-			.regex(/^(?!.*['-]{2})['A-Za-z-]*$/, {
-				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
-			})
-			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
-				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
-			}),
-		city: z
-			.string()
-			.trim()
-			.regex(/^['A-Za-z-]*$/, {
-				message: FormValidationMessage.INVALID_CHARACTERS,
-			})
-			.regex(/^(?!.*['-]{2})['A-Za-z-]*$/, {
-				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
-			})
-			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
-				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
-			}),
-		driverLicense: z
-			.string()
-			.trim()
-			.regex(/^(?!['-])(?!.*['-]$)[\w\d-]*$/, {
-				message: FormValidationMessage.INVALID_CHARACTERS,
-			})
-			.regex(/^(?!.*['-]{2})[\w\d-]*$/, {
-				message: FormValidationMessage.ADJACENT_HYPHEN_APOSTROPHE,
-			})
-			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
-				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
-			}),
-		address: z
-			.string()
-			.trim()
-			.regex(/^['\w\d\s-]*$/, {
-				message: FormValidationMessage.INVALID_CHARACTERS,
-			})
-			.max(FormValidationRule.COMMON_MAXIMUM_LENGTH, {
-				message: FormValidationMessage.COMMON_MAXIMUM_LENGTH,
-			}),
-		isRullesAccepted: z.literal(true, {
-			errorMap: () => ({ message: "Remember must be ticked" }),
-		}),
 	})
 	.required();
 

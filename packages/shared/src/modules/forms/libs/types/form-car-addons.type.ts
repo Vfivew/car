@@ -1,7 +1,7 @@
 type FormCarAddons = {
+	additionalInsurance: boolean;
 	childSeat: number;
 	ownDriver: boolean;
-	additionalInsurance: boolean;
 };
 
 export { type FormCarAddons };

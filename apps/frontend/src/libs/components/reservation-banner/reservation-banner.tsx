@@ -1,10 +1,11 @@
-import styles from "./styles.module.css";
-import { Link } from "../link/link.js";
 import { AppRoute } from "~/libs/enums/enums.js";
 import { useAppSelector } from "~/libs/hooks/hooks.js";
 
+import { Link } from "../link/link.js";
+import styles from "./styles.module.css";
+
 const ReservationBanner: React.FC = () => {
-	const { date, car, form, addons } = useAppSelector((state) => state.forms);
+	const { addons, car, date, form } = useAppSelector((state) => state.forms);
 	const isFinishDisabled = date.startDate && date.returnDate && car.name;
 
 	return (
@@ -14,8 +15,8 @@ const ReservationBanner: React.FC = () => {
 				<ul className={styles["list"]}>
 					<li className={styles["item"]}>
 						<Link
-							to={AppRoute.RESERVATION_DATE}
 							activeClassName={styles["active"]}
+							to={AppRoute.RESERVATION_DATE}
 						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>1</p>
@@ -23,16 +24,16 @@ const ReservationBanner: React.FC = () => {
 							</section>
 							<div className={styles["item-content"]}>
 								<h4>Pick Up</h4>
-								<p>{date.startDate ? date.startDate : "-- --"}</p>
+								<p>{date.startDate || "-- --"}</p>
 								<h4>Drop Off</h4>
-								<p>{date.returnDate ? date.returnDate : "-- --"}</p>
+								<p>{date.returnDate || "-- --"}</p>
 							</div>
 						</Link>
 					</li>
 					<li className={styles["item"]}>
 						<Link
-							to={AppRoute.RESERVATION_CAR}
 							activeClassName={styles["active"]}
+							to={AppRoute.RESERVATION_CAR}
 						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>2</p>
@@ -40,7 +41,7 @@ const ReservationBanner: React.FC = () => {
 							</section>
 							<div className={styles["item-content"]}>
 								<p>Car</p>
-								<p>{car.name ? car.name : "-- --"}</p>
+								<p>{car.name || "-- --"}</p>
 								<ul>
 									Addons:
 									<li>Child seat: {addons.childSeat}</li>
@@ -56,9 +57,9 @@ const ReservationBanner: React.FC = () => {
 						className={`${styles["item"]} ${!isFinishDisabled && styles["disabled"]}`}
 					>
 						<Link
-							to={AppRoute.RESERVATION_INFROMATION}
-							isDisabled={!isFinishDisabled}
 							activeClassName={styles["active"]}
+							isDisabled={!isFinishDisabled}
+							to={AppRoute.RESERVATION_INFROMATION}
 						>
 							<section className={styles["item-header"]}>
 								<p className={styles["item-number"]}>3</p>

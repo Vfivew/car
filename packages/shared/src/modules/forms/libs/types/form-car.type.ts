@@ -1,7 +1,7 @@
 type FormCar = {
-	carId: number | null;
-	name: string;
+	carId: null | number;
 	image: string;
+	name: string;
 	rentPrice: number;
 };
 

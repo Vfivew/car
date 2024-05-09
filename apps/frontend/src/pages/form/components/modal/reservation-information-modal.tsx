@@ -1,17 +1,14 @@
-import styles from "./styles.module.css";
-import {
-	Button,
-	Modal,
-} from "~/libs/components/components.js";
-
+import { Button, Modal } from "~/libs/components/components.js";
 import { AppRoute } from "~/libs/enums/enums.js";
 
-type CardProps = {
-	onClose: () => void;
+import styles from "./styles.module.css";
+
+type CardProperties = {
 	isOpen: boolean;
+	onClose: () => void;
 };
 
-const ReservationInformationModal: React.FC<CardProps> = ({
+const ReservationInformationModal: React.FC<CardProperties> = ({
 	isOpen,
 	onClose,
 }) => {
@@ -24,15 +21,13 @@ const ReservationInformationModal: React.FC<CardProps> = ({
 		>
 			<section className={styles["container"]}>
 				<h2 className={styles["title"]}>Thank you!</h2>
-				<p className={styles["text"]}>
-					We'll contact you as soon as possible!
-				</p>
+				<p className={styles["text"]}>We'll contact you as soon as possible!</p>
 				<Button
 					className={styles["button"]}
+					href={AppRoute.ROOT}
 					label="Back to main"
 					size="default"
 					type="submit"
-					href={AppRoute.ROOT}
 				/>
 			</section>
 		</Modal>

@@ -1,5 +1,6 @@
 import { RouterOutlet } from "~/libs/components/components.js";
 import { MENU_ITEMS } from "~/libs/constants/constants.js";
+import { DataStatus } from "~/libs/enums/enums.js";
 import {
 	useAppDispatch,
 	useAppSelector,
@@ -10,7 +11,6 @@ import { actions as authActions } from "~/modules/auth/auth.js";
 import { Footer } from "../footer/footer.js";
 import { Header } from "../header/header.js";
 import styles from "./styles.module.css";
-import { DataStatus } from "~/libs/enums/enums.js";
 
 const App: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ const App: React.FC = () => {
 
 	return (
 		<div className={styles["page-layout"]}>
-			<Header menuItems={MENU_ITEMS} user={user} isLoading={isLoading} />
+			<Header isLoading={isLoading} menuItems={MENU_ITEMS} user={user} />
 			<main className={styles["main-container"]}>
 				<RouterOutlet />
 			</main>

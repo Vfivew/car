@@ -1,6 +1,5 @@
-import { FormCarAddons } from "@car/shared";
+import { type FormCarAddons } from "@car/shared";
 
-import styles from "./styles.module.css";
 import {
 	Button,
 	Checkbox,
@@ -8,6 +7,7 @@ import {
 	Input,
 	Modal,
 } from "~/libs/components/components.js";
+import { AppRoute } from "~/libs/enums/enums.js";
 import {
 	useAppDispatch,
 	useAppForm,
@@ -20,19 +20,24 @@ import {
 	actions as formActions,
 	formCarParametersValidationSchema,
 } from "~/modules/form/forms.js";
-import { AppRoute } from "~/libs/enums/enums.js";
+import { ARRAY_LENGHT } from "~/pages/form/components/libs/constants/array-length.constant.js";
 
-type CardProps = {
-	onClose: () => void;
+import styles from "./styles.module.css";
+
+type Properties = {
 	isOpen: boolean;
+	onClose: () => void;
 };
 
-const CarReservationModal: React.FC<CardProps> = ({ isOpen, onClose }) => {
+const CarReservationModal: React.FC<Properties> = ({
+	isOpen,
+	onClose,
+}: Properties) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const carData = useAppSelector((state) => state.forms.addons);
 
-	const { control, errors, handleSubmit, reset, register } =
+	const { control, errors, handleSubmit, register, reset } =
 		useAppForm<FormCarAddons>({
 			defaultValues: {
 				additionalInsurance: carData.additionalInsurance,
@@ -54,25 +59,26 @@ const CarReservationModal: React.FC<CardProps> = ({ isOpen, onClose }) => {
 		(formData: FormCarAddons): void => {
 			void dispatch(
 				formActions.updateAddons({
-					childSeat: formData.childSeat,
 					additionalInsurance: formData.additionalInsurance,
+					childSeat: formData.childSeat,
 					ownDriver: formData.ownDriver,
 				}),
 			);
-		},
-		[dispatch],
-	);
 
-	const handleFormSubmit = useCallback(
-		async (event_: React.BaseSyntheticEvent): Promise<void> => {
-			event_.preventDefault();
-			await handleSubmit(handleInputChange)(event_);
-			if (!Object.keys(errors).length) {
+			if (Object.keys(errors).length === ARRAY_LENGHT.EMPTY) {
 				onClose();
 				navigate(AppRoute.RESERVATION_INFROMATION);
 			}
 		},
-		[handleSubmit, handleInputChange, errors],
+		[dispatch, errors, navigate, onClose],
+	);
+
+	const handleFormSubmit = useCallback(
+		(event_: React.BaseSyntheticEvent): void => {
+			event_.preventDefault();
+			void handleSubmit(handleInputChange)(event_);
+		},
+		[handleSubmit, handleInputChange],
 	);
 
 	return (
@@ -86,38 +92,38 @@ const CarReservationModal: React.FC<CardProps> = ({ isOpen, onClose }) => {
 				<ul className={styles["list-wrapper"]}>
 					<h2 className={styles["title"]}>Optional addon</h2>
 					<li className={styles["car-modification-item"]}>
-						<Icon className={styles["checked"]} name={"checked"} />
+						<Icon className={styles["checked"]} name="checked" />
 						Own driver
 						<Checkbox
 							control={control}
 							errors={errors}
 							hasVisuallyHiddenLabel
 							label="Own driver"
-							name={"ownDriver"}
+							name="ownDriver"
 						/>
 					</li>
 					<li className={styles["car-modification-item"]}>
-						<Icon className={styles["checked"]} name={"checked"} />
+						<Icon className={styles["checked"]} name="checked" />
 						<Input
 							control={control}
 							errors={errors}
+							inputMode="numeric"
 							label="Child seat"
 							name="childSeat"
 							placeholder="Child seat"
-							type="number"
-							inputMode="numeric"
 							register={register}
+							type="number"
 						/>
 					</li>
 					<li className={styles["car-modification-item"]}>
-						<Icon className={styles["checked"]} name={"checked"} />
+						<Icon className={styles["checked"]} name="checked" />
 						Additional insurancer
 						<Checkbox
 							control={control}
 							errors={errors}
 							hasVisuallyHiddenLabel
 							label="Additional insurance"
-							name={"additionalInsurance"}
+							name="additionalInsurance"
 						/>
 					</li>
 				</ul>

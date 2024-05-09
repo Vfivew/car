@@ -1,4 +1,6 @@
+import { Button, Input, Select } from "~/libs/components/components.js";
 import { AppRoute, AppTitle } from "~/libs/enums/enums.js";
+import { getTomorrowDateString } from "~/libs/helpers/helpers.js";
 import {
 	useAppDispatch,
 	useAppForm,
@@ -7,20 +9,14 @@ import {
 	useMemo,
 	useNavigate,
 } from "~/libs/hooks/hooks.js";
-
-import styles from "./styles.module.css";
 import {
-	Button,
-	Input,
-	Select,
-} from "~/libs/components/components.js";
-import {
-	FormDate,
+	type FormDate,
 	actions as formActions,
 	formParametersValidationSchema,
 } from "~/modules/form/forms.js";
-import { getTomorrowDateString } from "~/libs/helpers/helpers.js";
-import { OUR_OFFICE } from "./libs/constants/constants.js";
+
+import { ARRAY_LENGHT, OUR_OFFICE } from "../libs/constants/constants.js";
+import styles from "./styles.module.css";
 
 const ReservationDate: React.FC = () => {
 	useAppTitle(AppTitle.RESERVATION);
@@ -30,8 +26,8 @@ const ReservationDate: React.FC = () => {
 	const { control, errors, handleSubmit, reset, watch } = useAppForm<FormDate>({
 		defaultValues: {
 			office: "",
-			startDate: "",
 			returnDate: "",
+			startDate: "",
 		},
 		validationSchema: formParametersValidationSchema,
 	});
@@ -51,28 +47,29 @@ const ReservationDate: React.FC = () => {
 			void dispatch(
 				formActions.updateDate({
 					office: formData.office,
-					startDate: formData.startDate,
 					returnDate: formData.returnDate,
+					startDate: formData.startDate,
 				}),
 			);
-			if (!Object.keys(errors).length) {
+
+			if (Object.keys(errors).length === ARRAY_LENGHT.EMPTY) {
 				navigate(AppRoute.RESERVATION_CAR);
 			}
 		},
-		[dispatch],
+		[dispatch, errors, navigate],
 	);
 
 	const handleFormSubmit = useCallback(
 		(event_: React.BaseSyntheticEvent): void => {
 			void handleSubmit(handleInputChange)(event_);
 		},
-		[handleSubmit, handleInputChange, errors],
+		[handleSubmit, handleInputChange],
 	);
 
 	const handleResetForm = useCallback(() => {
 		void dispatch(formActions.resetDate());
 		reset();
-	}, [reset]);
+	}, [reset, dispatch]);
 
 	return (
 		<div className={styles["container"]}>
@@ -85,20 +82,20 @@ const ReservationDate: React.FC = () => {
 							control={control}
 							errors={errors}
 							label="Start date"
+							maxDate={getTomorrowDateString(returnDate)}
+							minDate={getTomorrowDateString(new Date())}
 							name="startDate"
 							placeholder="Choise start day"
 							type="date"
-							minDate={getTomorrowDateString(new Date())}
-							maxDate={getTomorrowDateString(returnDate)}
 						/>
 						<Input
 							control={control}
 							errors={errors}
 							label="Return date"
+							minDate={getTomorrowDateString(startDate)}
 							name="returnDate"
 							placeholder="Choise return day"
 							type="date"
-							minDate={getTomorrowDateString(startDate)}
 						/>
 					</div>
 					<div className={styles["content"]}>

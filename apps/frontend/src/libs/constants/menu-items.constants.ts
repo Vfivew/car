@@ -8,7 +8,7 @@ const MENU_ITEMS: MenuItem[] = [
 		label: "Main",
 	},
 	{
-		href: AppRoute.PROFILE,
+		href: AppRoute.ABOUT_US,
 		label: "About us",
 	},
 ];

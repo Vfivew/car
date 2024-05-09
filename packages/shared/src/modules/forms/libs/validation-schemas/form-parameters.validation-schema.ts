@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-import { FormValidationMessage } from "../enums/enums.js";
+import { FormValidationMessage, FormValidationRule } from "../enums/enums.js";
 
 type FormParametersParametersValidationDto = {
 	office: z.ZodString;
-	startDate: z.ZodString;
 	returnDate: z.ZodString;
+	startDate: z.ZodString;
 };
 
 const formParameters = z
@@ -13,17 +13,23 @@ const formParameters = z
 		office: z
 			.string()
 			.trim()
-			.min(1, { message: FormValidationMessage.INVALID_DATE })
-			.trim(),
-		startDate: z
-			.string()
-			.trim()
-			.min(1, { message: FormValidationMessage.INVALID_DATE })
+			.min(FormValidationRule.FIELD_MINIMUM_LENGTH, {
+				message: FormValidationMessage.INVALID_DATE,
+			})
 			.trim(),
 		returnDate: z
 			.string()
 			.trim()
-			.min(1, { message: FormValidationMessage.INVALID_OFFICE })
+			.min(FormValidationRule.FIELD_MINIMUM_LENGTH, {
+				message: FormValidationMessage.INVALID_OFFICE,
+			})
+			.trim(),
+		startDate: z
+			.string()
+			.trim()
+			.min(FormValidationRule.FIELD_MINIMUM_LENGTH, {
+				message: FormValidationMessage.INVALID_DATE,
+			})
 			.trim(),
 	})
 	.required();

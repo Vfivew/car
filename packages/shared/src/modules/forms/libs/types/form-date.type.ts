@@ -1,7 +1,7 @@
 type FormDate = {
 	office: string;
-	startDate: string;
 	returnDate: string;
+	startDate: string;
 };
 
 export { type FormDate };

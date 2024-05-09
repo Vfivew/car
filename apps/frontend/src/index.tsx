@@ -12,9 +12,10 @@ import { AppRoute } from "~/libs/enums/enums.js";
 import { store } from "~/libs/modules/store/store.js";
 import { Auth } from "~/pages/auth/auth.jsx";
 
+import { AboutUs } from "./pages/about-us/about-us.js";
+import { Form } from "./pages/form/form.js";
 import { NotFound } from "./pages/not-found/not-found.js";
 import { Overview } from "./pages/overview/overview.js";
-import { Form } from "./pages/form/form.js";
 import { Rules } from "./pages/rules/rules.js";
 
 createRoot(document.querySelector("#root") as HTMLElement).render(
@@ -60,6 +61,10 @@ createRoot(document.querySelector("#root") as HTMLElement).render(
 							{
 								element: <Rules />,
 								path: AppRoute.RULES,
+							},
+							{
+								element: <AboutUs />,
+								path: AppRoute.ABOUT_US,
 							},
 						],
 						element: <App />,

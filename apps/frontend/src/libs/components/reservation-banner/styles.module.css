@@ -86,15 +86,19 @@
 	background-color: var(--main-color);
 }
 
-.disabled{
-	background-color:var(--color-text-500)
+.disabled {
+	background-color: var(--color-text-500);
 }
 
-.disabled .item-header{
-		background-color:var(--color-text-100)
+.disabled .item-header {
+	background-color: var(--color-text-100);
 }
 
 @media screen and (--medium-screen) {
+	.container-wrapper {
+		height: 100%;
+	}
+
 	.list {
 		flex-direction: column;
 		align-items: center;
@@ -102,9 +106,10 @@
 
 	.item {
 		width: 100%;
+		min-height: 200px;
 	}
 
 	.item-content {
-		height: auto;
+		min-height: 150px;
 	}
 }
