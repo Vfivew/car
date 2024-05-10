@@ -4,14 +4,14 @@ import styles from "./styles.module.css";
 
 type Properties = {
 	className?: string | undefined;
-	size: "large" | "small" | "micro";
+	size: "large" | "micro" | "small";
 };
 
 const Loader: React.FC<Properties> = ({ className, size }: Properties) => {
 	return (
 		<span
 			className={getValidClassNames(styles["loader"], className, styles[size])}
-		></span>
+		/>
 	);
 };
 

@@ -3,9 +3,9 @@ import { type Knex } from "knex";
 const TABLE_NAME = "services";
 
 const ColumnName = {
+	ADDITIONAL_INSURANCE: "additional_insurance",
 	CHILD_SEAT: "child_seat",
 	OWN_DRIVER: "own_driver",
-	ADDITIONAL_INSURANCE: "additional_insurance",
 } as const;
 
 const SeedData = [

@@ -1,9 +1,5 @@
 import { getValidClassNames } from "~/libs/helpers/helpers.js";
-import {
-	useHandleClickOutside,
-	useRef,
-	useToggleScroll,
-} from "~/libs/hooks/hooks.js";
+import { useHandleClickOutside, useRef } from "~/libs/hooks/hooks.js";
 
 import { Button } from "../button/button.js";
 import { Portal } from "../portal/portal.js";

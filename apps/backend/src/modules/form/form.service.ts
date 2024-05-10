@@ -1,25 +1,24 @@
-import { HTTPCode } from "~/libs/modules/http/http.js";
-import { type Service } from "~/libs/types/types.js";
 import {
-	CarEntity,
-	CarErrorMessage,
-	type CarRepository,
-} from "~/modules/cars/cars.js";
+	FormErrorMessage,
+	type FormPrice,
+	type FormPriceRequestDto,
+} from "@car/shared";
 
+import { HTTPCode } from "~/libs/modules/http/http.js";
+
+import { type AddonEntity } from "../activity-likes/addon.entity.js";
+import { type AddonRepository } from "../activity-likes/addon.repository.js";
+import { FormEntity } from "./form.entity.js";
+import { type FormRepository } from "./forms.js";
 import { FormError } from "./libs/exceptions/exceptions.js";
 import {
 	type FormRequestDto,
 	type FormResponseDto,
 } from "./libs/types/types.js";
-import { FormEntity } from "./form.entity.js";
-import { type FormRepository } from "./forms.js";
-import { FormErrorMessage, FormPrice, FormPriceRequestDto } from "@car/shared";
-import { type AddonRepository } from "../activity-likes/addon.repository.js";
-import { AddonEntity } from "../activity-likes/addon.entity.js";
 
 class FormService {
-	private formRepository: FormRepository;
 	private addonRepository: AddonRepository;
+	private formRepository: FormRepository;
 
 	public constructor(
 		formRepository: FormRepository,
@@ -32,23 +31,23 @@ class FormService {
 	public async create(payload: FormRequestDto): Promise<FormResponseDto> {
 		const form = await this.formRepository.create(
 			FormEntity.initializeNew({
-				firstName: payload.firstName,
-				lastName: payload.lastName,
-				phone: payload.phone,
-				email: payload.email,
-				city: payload.city || "",
-				country: payload.country || "",
+				additionalInsurance: payload.additionalInsurance,
 				address: payload.address || "",
-				driverLicense: payload.driverLicense || "",
 				carId: payload.carId as number,
 				childSeat: payload.childSeat,
-				ownDriver: payload.ownDriver,
-				additionalInsurance: payload.additionalInsurance,
-				office: payload.office,
-				startDate: payload.startDate,
-				returnDate: payload.returnDate,
-				price: payload.price,
+				city: payload.city || "",
+				country: payload.country || "",
+				driverLicense: payload.driverLicense || "",
+				email: payload.email,
+				firstName: payload.firstName,
 				isRullesAccepted: payload.isRullesAccepted,
+				lastName: payload.lastName,
+				office: payload.office,
+				ownDriver: payload.ownDriver,
+				phone: payload.phone,
+				price: payload.price,
+				returnDate: payload.returnDate,
+				startDate: payload.startDate,
 			}),
 		);
 
@@ -57,7 +56,7 @@ class FormService {
 
 	public async getPrice(payload: FormPriceRequestDto): Promise<FormPrice> {
 		const addons = await this.addonRepository.findAll();
-		const days = payload.days;
+		const { days } = payload;
 
 		if (!addons) {
 			throw new FormError({

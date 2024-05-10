@@ -13,17 +13,16 @@ const formApi = new FormApi({
 export {
 	type Form,
 	type FormCar,
-	type FormDate,
-	type FormRequestDto,
-	type FormResponseDto,
-	type FormPriceRequestDto,
-	type FormPrice,
 	type FormCarAddons,
+	type FormDate,
+	type FormPrice,
+	type FormPriceRequestDto,
+	type FormRequestDto,
 } from "./libs/types/types.js";
 export { formApi };
 export {
-	formParametersValidationSchema,
 	formCarParametersValidationSchema,
 	formInformationParametersValidationSchema,
+	formParametersValidationSchema,
 } from "./libs/validation-schemas/validation-schemas.js";
 export { actions, reducer } from "./slices/form.js";

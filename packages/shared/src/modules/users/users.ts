@@ -1,8 +1,7 @@
-export { UserErrorMessage, UserSex, UsersApiPath } from "./libs/enums/enums.js";
+export { UserSex, UsersApiPath } from "./libs/enums/enums.js";
 export { UserError } from "./libs/exceptions/exceptions.js";
 export {
 	type UserAuthResponseDto,
-	type UserDetailsResponseDto,
 	type UserGetByIdRequestDto,
 	type UserProfileRequestDto,
 	type UserSignInRequestDto,

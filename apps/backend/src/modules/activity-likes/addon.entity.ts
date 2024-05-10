@@ -1,28 +1,28 @@
 import { type Entity } from "~/libs/types/types.js";
 
 class AddonEntity implements Entity {
-	public name: string;
-
 	private createdAt: string;
 
 	private id: null | number;
 
 	private updatedAt: string;
 
+	public name: string;
+
 	public price: number;
 
 	private constructor({
-		name,
 		createdAt,
 		id,
-		updatedAt,
+		name,
 		price,
+		updatedAt,
 	}: {
-		name: string;
 		createdAt: string;
 		id: null | number;
-		updatedAt: string;
+		name: string;
 		price: number;
+		updatedAt: string;
 	}) {
 		this.createdAt = createdAt;
 		this.name = name;
@@ -32,40 +32,40 @@ class AddonEntity implements Entity {
 	}
 
 	public static initialize({
-		price,
 		createdAt,
 		id,
-		updatedAt,
 		name,
+		price,
+		updatedAt,
 	}: {
-		price: number;
 		createdAt: string;
 		id: null | number;
-		updatedAt: string;
 		name: string;
+		price: number;
+		updatedAt: string;
 	}): AddonEntity {
 		return new AddonEntity({
-			price,
 			createdAt,
 			id,
-			updatedAt,
 			name,
+			price,
+			updatedAt,
 		});
 	}
 
 	public static initializeNew({
-		price,
 		name,
+		price,
 	}: {
-		price: number;
 		name: string;
+		price: number;
 	}): AddonEntity {
 		return new AddonEntity({
-			price,
 			createdAt: "",
 			id: null,
-			updatedAt: "",
 			name,
+			price,
+			updatedAt: "",
 		});
 	}
 
@@ -80,13 +80,13 @@ class AddonEntity implements Entity {
 	}
 
 	public toObject(): {
-		name: string;
 		id: number;
+		name: string;
 		price: number;
 	} {
 		return {
-			name: this.name,
 			id: this.id as number,
+			name: this.name,
 			price: this.price,
 		};
 	}

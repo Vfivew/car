@@ -39,12 +39,12 @@ class BaseDatabase implements Database {
 				directory: "src/db/migrations",
 				tableName: DatabaseTableName.MIGRATIONS,
 			},
-			seeds: {
-				directory: "src/db/seeds",
-			},
 			pool: {
 				max: this.appConfig.ENV.DB.POOL_MAX,
 				min: this.appConfig.ENV.DB.POOL_MIN,
+			},
+			seeds: {
+				directory: "src/db/seeds",
 			},
 			...knexSnakeCaseMappers({ underscoreBetweenUppercaseLetters: true }),
 		};

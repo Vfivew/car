@@ -1,5 +1,3 @@
-import { type Repository } from "~/libs/types/types.js";
-
 import { AddonEntity } from "./addon.entity.js";
 import { type AddonModel } from "./addon.model.js";
 
@@ -15,11 +13,11 @@ class AddonRepository {
 
 		return addons.map((addon) => {
 			return AddonEntity.initialize({
-				name: addon.name,
 				createdAt: addon.createdAt,
 				id: addon.id,
-				updatedAt: addon.updatedAt,
+				name: addon.name,
 				price: addon.price,
+				updatedAt: addon.updatedAt,
 			});
 		});
 	}

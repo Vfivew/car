@@ -1,9 +1,9 @@
 import {
-	UseFormRegister,
 	type Control,
 	type FieldErrors,
 	type FieldPath,
 	type FieldValues,
+	type UseFormRegister,
 } from "react-hook-form";
 
 import { getValidClassNames } from "~/libs/helpers/helpers.js";
@@ -20,15 +20,15 @@ type Properties<T extends FieldValues> = {
 	errors: FieldErrors<T>;
 	hasVisuallyHiddenLabel?: boolean;
 	iconName?: IconName;
-	inputMode?: "email" | "text" | "numeric";
+	inputMode?: "email" | "numeric" | "text";
 	label: string;
+	maxDate?: string;
+	minDate?: string;
 	name: FieldPath<T>;
 	placeholder?: string;
-	rows?: number;
-	type?: "email" | "password" | "text" | "date" | "number";
-	minDate?: string;
-	maxDate?: string;
 	register?: UseFormRegister<T>;
+	rows?: number;
+	type?: "date" | "email" | "number" | "password" | "text";
 };
 
 const Input = <T extends FieldValues>({
@@ -40,13 +40,13 @@ const Input = <T extends FieldValues>({
 	iconName,
 	inputMode = "text",
 	label,
+	maxDate = "",
+	minDate = "",
 	name,
 	placeholder = "",
+	register,
 	rows,
 	type = "text",
-	minDate = "",
-	maxDate = "",
-	register,
 }: Properties<T>): JSX.Element => {
 	const { field } = useFormController({ control, name });
 
@@ -88,10 +88,10 @@ const Input = <T extends FieldValues>({
 					className={inputClasses}
 					{...field}
 					inputMode={inputMode}
+					max={type === "date" ? maxDate : undefined}
+					min={type === "date" ? minDate : undefined}
 					placeholder={placeholder}
 					type={type}
-					min={type === "date" ? minDate : undefined}
-					max={type === "date" ? maxDate : undefined}
 					{...(register && register(name, { valueAsNumber: true }))}
 				/>
 			)}

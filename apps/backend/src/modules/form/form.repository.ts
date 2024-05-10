@@ -1,15 +1,10 @@
-import { type CarRequestDto } from "@car/shared";
-
-import { RelationName } from "~/libs/enums/enums.js";
-import { type Repository } from "~/libs/types/types.js";
-
+import { type CarModel } from "../cars/cars.js";
 import { FormEntity } from "./form.entity.js";
 import { type FormModel } from "./form.model.js";
-import { CarModel } from "../cars/cars.js";
 
 class FormRepository {
-	private formModel: typeof FormModel;
 	private carModel: typeof CarModel;
+	private formModel: typeof FormModel;
 	public constructor(carModel: typeof CarModel, formModel: typeof FormModel) {
 		this.carModel = carModel;
 		this.formModel = formModel;
@@ -17,69 +12,69 @@ class FormRepository {
 
 	public async create(entity: FormEntity): Promise<FormEntity> {
 		const {
-			firstName,
-			lastName,
-			phone,
-			email,
-			city,
-			country,
+			additionalInsurance,
 			address,
-			driverLicense,
 			carId,
 			childSeat,
-			ownDriver,
-			additionalInsurance,
-			office,
-			startDate,
-			returnDate,
-			price,
+			city,
+			country,
+			driverLicense,
+			email,
+			firstName,
 			isRullesAccepted,
+			lastName,
+			office,
+			ownDriver,
+			phone,
+			price,
+			returnDate,
+			startDate,
 		} = entity.toNewObject();
 
 		const form = await this.formModel
 			.query()
 			.insert({
-				firstName,
-				lastName,
-				phone,
-				email,
-				city,
-				country,
+				additionalInsurance,
 				address,
-				driverLicense,
 				carId,
 				childSeat,
-				ownDriver,
-				additionalInsurance,
-				office,
-				startDate,
-				returnDate,
-				price,
+				city,
+				country,
+				driverLicense,
+				email,
+				firstName,
 				isRullesAccepted,
+				lastName,
+				office,
+				ownDriver,
+				phone,
+				price,
+				returnDate,
+				startDate,
 			})
 			.returning("*");
 
 		return FormEntity.initialize({
-			createdAt: form.createdAt,
-			id: form.id,
-			updatedAt: form.updatedAt,
-			firstName: form.firstName,
-			lastName: form.lastName,
-			phone: form.phone,
-			email: form.email,
-			city: form.city,
-			country: form.country,
+			additionalInsurance: form.additionalInsurance,
 			address: form.address,
-			driverLicense: form.driverLicense,
 			carId: form.carId,
 			childSeat: form.childSeat,
-			ownDriver: form.ownDriver,
+			city: form.city,
+			country: form.country,
+			createdAt: form.createdAt,
+			driverLicense: form.driverLicense,
+			email: form.email,
+			firstName: form.firstName,
+			id: form.id,
 			isRullesAccepted: form.isRullesAccepted,
-			additionalInsurance: form.additionalInsurance,
+			lastName: form.lastName,
 			office: form.office,
-			startDate: form.startDate,
-			returnDate: form.returnDate,
+			ownDriver: form.ownDriver,
+			phone: form.phone,
 			price: form.price,
+			returnDate: form.returnDate,
+			startDate: form.startDate,
+			updatedAt: form.updatedAt,
 		});
 	}
 }

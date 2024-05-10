@@ -21,41 +21,41 @@ class FormModel extends AbstractModel {
 		};
 	};
 
-	public car!: CarModel;
-
-	public firstName!: string;
-
-	public lastName!: string;
-
-	public phone!: string;
-
-	public email!: string;
-
-	public isRullesAccepted!: boolean;
-
-	public city!: string;
-
-	public country!: string;
+	public additionalInsurance!: boolean;
 
 	public address!: string;
 
-	public driverLicense!: string;
+	public car!: CarModel;
 
 	public carId!: number;
 
 	public childSeat!: number;
 
-	public ownDriver!: boolean;
+	public city!: string;
 
-	public additionalInsurance!: boolean;
+	public country!: string;
+
+	public driverLicense!: string;
+
+	public email!: string;
+
+	public firstName!: string;
+
+	public isRullesAccepted!: boolean;
+
+	public lastName!: string;
 
 	public office!: string;
 
-	public startDate!: string;
+	public ownDriver!: boolean;
+
+	public phone!: string;
+
+	public price!: number;
 
 	public returnDate!: string;
 
-	public price!: number;
+	public startDate!: string;
 
 	public static override get tableName(): string {
 		return DatabaseTableName.FORMS;

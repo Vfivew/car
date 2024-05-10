@@ -2,24 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { type AsyncThunkConfig } from "~/libs/types/types.js";
 import {
-	FormPrice,
-	FormPriceRequestDto,
-	FormRequestDto,
-	type FormResponseDto,
+	type FormPrice,
+	type FormPriceRequestDto,
+	type FormRequestDto,
 } from "~/modules/form/forms.js";
 
-import { formApi } from "../forms.js";
 import { name as sliceName } from "./form.slice.js";
-
-// const forgotPassword = createAsyncThunk<
-// 	boolean,
-// 	AuthForgotPasswordRequestDto,
-// 	AsyncThunkConfig
-// >(`${sliceName}/forgot-password`, async (payload, { extra }) => {
-// 	const { authApi } = extra;
-
-// 	return await authApi.forgotPassword(payload);
-// });
 
 const createForm = createAsyncThunk<any, FormRequestDto, AsyncThunkConfig>(
 	`${sliceName}/create-form`,

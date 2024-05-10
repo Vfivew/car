@@ -1,1 +1,1 @@
-export { CarErrorMessage, CarsApiPath } from "@car/shared";
+export { CarsApiPath } from "@car/shared";

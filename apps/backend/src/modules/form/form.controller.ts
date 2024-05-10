@@ -1,5 +1,3 @@
-import { FormPriceRequestDto, FormRequestDto, FormsApiPath } from "@car/shared";
-
 import { APIPath } from "~/libs/enums/enums.js";
 import {
 	type APIHandlerOptions,
@@ -9,7 +7,12 @@ import {
 import { HTTPCode } from "~/libs/modules/http/http.js";
 import { type Logger } from "~/libs/modules/logger/logger.js";
 
-import { type FormResponseDto, type FormService } from "./forms.js";
+import {
+	type FormPriceRequestDto,
+	type FormRequestDto,
+	type FormService,
+	FormsApiPath,
+} from "./forms.js";
 import { formAllParametersValidationSchema } from "./libs/validation-schemas/validation-schemas.js";
 
 class FormController extends BaseController {
@@ -57,7 +60,7 @@ class FormController extends BaseController {
 		}>,
 	): Promise<APIHandlerResponse> {
 		const payload = options.body;
-		console.log(options.body);
+
 		return {
 			payload: await this.formService.create(payload),
 			status: HTTPCode.OK,

@@ -3,8 +3,8 @@ import { actions } from "./form.slice.js";
 
 const allActions = {
 	...actions,
-	getPrice,
 	createForm,
+	getPrice,
 };
 
 export { reducer } from "./form.slice.js";

@@ -1,8 +1,8 @@
 const APIPath = {
 	AUTH: "/auth",
 	CARS: "/cars",
-	USERS: "/users",
 	FORMS: "/forms",
+	USERS: "/users",
 } as const;
 
 export { APIPath };

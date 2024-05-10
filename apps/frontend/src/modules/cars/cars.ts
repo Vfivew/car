@@ -10,7 +10,6 @@ const carApi = new CarApi({
 	storage,
 });
 
-export { type CarRequestDto, type CarResponseDto } from "./libs/types/types.js";
+export { type CarResponseDto } from "./libs/types/types.js";
 export { carApi };
-export { carIdParametersValidationSchema } from "./libs/validation-schemas/validation-schemas.js";
 export { actions, reducer } from "./slices/cars.js";

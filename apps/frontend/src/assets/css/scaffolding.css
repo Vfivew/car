@@ -54,7 +54,7 @@ body {
 
 @-moz-document url-prefix() {
 	* {
-		scrollbar-color: var(--color-text-100) var(--main-white);
+		scrollbar-color: var(--color-text-100) var(--main-color);
 		scrollbar-width: thin;
 	}
 }
@@ -71,6 +71,6 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-	background-color: var(--main-white);
+	background-color: var(--main-color);
 	background-color: transparent;
 }

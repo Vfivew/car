@@ -4,6 +4,7 @@ import {
 	useCallback,
 	useLocation,
 	useNavigate,
+	useResetScroll,
 	useState,
 } from "~/libs/hooks/hooks.js";
 
@@ -46,6 +47,8 @@ const Form: React.FC = () => {
 
 		return null;
 	};
+
+	useResetScroll();
 
 	return (
 		<div className={styles["container"]}>

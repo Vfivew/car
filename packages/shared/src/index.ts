@@ -3,20 +3,11 @@ export {
 	APIPath,
 	AppEnvironment,
 	ContentType,
-	DateValue,
 	ExceptionMessage,
-	FormatDateType,
 	ServerErrorType,
 } from "./libs/enums/enums.js";
 export { ValidationError } from "./libs/exceptions/exceptions.js";
-export {
-	checkIsDatePrecedesAnotherByOneDay,
-	checkIsToday,
-	checkIsYesterday,
-	configureString,
-	getDifferenceInHours,
-	getFormattedDate,
-} from "./libs/helpers/helpers.js";
+export { configureString } from "./libs/helpers/helpers.js";
 export { type Config } from "./libs/modules/config/config.js";
 export {
 	type HTTP,
@@ -28,7 +19,6 @@ export {
 } from "./libs/modules/http/http.js";
 export { type Storage } from "./libs/modules/storage/storage.js";
 export {
-	type ExtractPath,
 	type ServerCommonErrorResponse,
 	type ServerErrorDetail,
 	type ServerErrorResponse,
@@ -77,9 +67,7 @@ export {
 } from "./modules/forms/forms.js";
 export {
 	type UserAuthResponseDto,
-	type UserDetailsResponseDto,
 	UserError,
-	UserErrorMessage,
 	type UserGetByIdRequestDto,
 	type UserProfileRequestDto,
 	UserSex,

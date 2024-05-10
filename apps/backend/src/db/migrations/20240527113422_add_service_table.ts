@@ -3,10 +3,10 @@ import { type Knex } from "knex";
 const TABLE_NAME = "services";
 
 const ColumnName = {
+	CREATED_AT: "created_at",
 	ID: "id",
 	NAME: "name",
 	PRICE: "price",
-	CREATED_AT: "created_at",
 	UPDATED_AT: "updated_at",
 } as const;
 

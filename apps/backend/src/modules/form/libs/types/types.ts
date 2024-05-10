@@ -1,1 +1,5 @@
-export { type FormRequestDto, type FormResponseDto } from "@car/shared";
+export {
+	type FormPriceRequestDto,
+	type FormRequestDto,
+	type FormResponseDto,
+} from "@car/shared";

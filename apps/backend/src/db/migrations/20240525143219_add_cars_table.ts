@@ -3,11 +3,11 @@ import { type Knex } from "knex";
 const TABLE_NAME = "cars";
 
 const ColumnName = {
+	CREATED_AT: "created_at",
 	ID: "id",
 	IMAGE: "image",
 	NAME: "name",
 	RENT_PRICE: "rent_price",
-	CREATED_AT: "created_at",
 	UPDATED_AT: "updated_at",
 } as const;
 

@@ -11,7 +11,7 @@ const initialState: State = {
 	redirectTo: null,
 };
 
-const { actions, reducer } = createSlice({
+const { reducer } = createSlice({
 	initialState,
 	name: "app",
 	reducers: {
@@ -24,4 +24,4 @@ const { actions, reducer } = createSlice({
 	},
 });
 
-export { actions, reducer };
+export { reducer };

@@ -7,13 +7,13 @@ const ColumnName = {
 	CD_PLAYER: "cd_player",
 	CENTRAL_LOCKING: "central_locking",
 	CLIMATE_CONTROL: "climate_control",
+	CREATED_AT: "created_at",
 	ID: "id",
 	NAVIGATION_SYSTEM: "navigation_system",
 	NUMBER_OF_DOORS: "number_of_doors",
 	PANORAMIC_ROOF: "panoramic_roof",
 	PARKING_SENSOR: "parking_sensors",
 	TRUNK_VOLUME: "trunk_volume",
-	CREATED_AT: "created_at",
 	UPDATED_AT: "updated_at",
 } as const;
 

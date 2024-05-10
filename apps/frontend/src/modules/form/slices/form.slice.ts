@@ -3,102 +3,61 @@ import { createSlice } from "@reduxjs/toolkit";
 import { DataStatus } from "~/libs/enums/enums.js";
 import { type ValueOf } from "~/libs/types/types.js";
 import {
-	FormPrice,
 	type Form,
 	type FormCar,
-	type FormDate,
 	type FormCarAddons,
+	type FormDate,
+	type FormPrice,
 } from "~/modules/form/forms.js";
 
-import { getPrice, createForm } from "./actions.js";
+import { createForm, getPrice } from "./actions.js";
 
 type State = {
-	form: Form;
-	car: FormCar;
-	date: FormDate;
 	addons: FormCarAddons;
-	price: FormPrice;
+	car: FormCar;
 	dataStatus: ValueOf<typeof DataStatus>;
+	date: FormDate;
+	form: Form;
+	price: FormPrice;
 	priceStatus: ValueOf<typeof DataStatus>;
 };
 
 const initialState: State = {
-	form: {
-		firstName: "",
-		lastName: "",
-		phone: "",
-		email: "",
-		country: null,
-		city: null,
-		address: null,
-		driverLicense: null,
-		isRullesAccepted: false,
+	addons: {
+		additionalInsurance: false,
+		childSeat: 0,
+		ownDriver: false,
 	},
 	car: {
 		carId: null,
-		name: "",
 		image: "",
+		name: "",
 		rentPrice: 0,
 	},
-	addons: {
-		childSeat: 0,
-		ownDriver: false,
-		additionalInsurance: false,
-	},
+	dataStatus: DataStatus.IDLE,
 	date: {
 		office: "",
-		startDate: "",
 		returnDate: "",
+		startDate: "",
+	},
+	form: {
+		address: null,
+		city: null,
+		country: null,
+		driverLicense: null,
+		email: "",
+		firstName: "",
+		isRullesAccepted: false,
+		lastName: "",
+		phone: "",
 	},
 	price: {
 		price: 0,
 	},
-	dataStatus: DataStatus.IDLE,
 	priceStatus: DataStatus.IDLE,
 };
 
 const { actions, name, reducer } = createSlice({
-	reducers: {
-		updateForm: (state, action) => {
-			state.form = {
-				...state.form,
-				...action.payload,
-			};
-		},
-		updateDate: (state, action) => {
-			state.date = {
-				...state.date,
-				...action.payload,
-			};
-		},
-		updateCar: (state, action) => {
-			console.log(action.payload);
-			state.car = {
-				carId: action.payload.id,
-				name: action.payload.name,
-				image: action.payload.image,
-				rentPrice: action.payload.rentPrice,
-			};
-		},
-		updateAddons: (state, action) => {
-			state.addons = {
-				...state.addons,
-				...action.payload,
-			};
-		},
-		resetDate: (state) => {
-			state.date = initialState.date;
-		},
-		resetCar: (state) => {
-			state.car = initialState.car;
-		},
-		resetForm: (state) => {
-			state.form = initialState.form;
-		},
-		resetAddons: (state) => {
-			state.addons = initialState.addons;
-		},
-	},
 	extraReducers(builder) {
 		builder.addCase(getPrice.fulfilled, (state, action) => {
 			state.price = action.payload;
@@ -126,6 +85,46 @@ const { actions, name, reducer } = createSlice({
 	},
 	initialState,
 	name: "form",
+	reducers: {
+		resetAddons: (state) => {
+			state.addons = initialState.addons;
+		},
+		resetCar: (state) => {
+			state.car = initialState.car;
+		},
+		resetDate: (state) => {
+			state.date = initialState.date;
+		},
+		resetForm: (state) => {
+			state.form = initialState.form;
+		},
+		updateAddons: (state, action) => {
+			state.addons = {
+				...state.addons,
+				...action.payload,
+			};
+		},
+		updateCar: (state, action) => {
+			state.car = {
+				carId: action.payload.id,
+				image: action.payload.image,
+				name: action.payload.name,
+				rentPrice: action.payload.rentPrice,
+			};
+		},
+		updateDate: (state, action) => {
+			state.date = {
+				...state.date,
+				...action.payload,
+			};
+		},
+		updateForm: (state, action) => {
+			state.form = {
+				...state.form,
+				...action.payload,
+			};
+		},
+	},
 });
 
 export { actions, name, reducer };

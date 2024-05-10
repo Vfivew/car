@@ -1,87 +1,87 @@
 import { type Entity } from "~/libs/types/types.js";
 
 class FormEntity implements Entity {
+	private carId: number;
+
 	private createdAt: string;
 
 	private id: null | number;
 
-	private carId: number;
+	public additionalInsurance!: boolean;
 
-	public updatedAt: string;
+	public address!: string;
 
-	public firstName!: string;
-
-	public lastName!: string;
-
-	public phone!: string;
-
-	public email!: string;
-
-	public isRullesAccepted: boolean;
+	public childSeat!: number;
 
 	public city!: string;
 
 	public country!: string;
 
-	public address!: string;
-
 	public driverLicense!: string;
 
-	public childSeat!: number;
+	public email!: string;
 
-	public ownDriver!: boolean;
+	public firstName!: string;
 
-	public additionalInsurance!: boolean;
+	public isRullesAccepted: boolean;
+
+	public lastName!: string;
 
 	public office!: string;
 
-	public startDate!: string;
+	public ownDriver!: boolean;
+
+	public phone!: string;
+
+	public price!: number;
 
 	public returnDate!: string;
 
-	public price!: number;
+	public startDate!: string;
+
+	public updatedAt: string;
 	private constructor({
-		createdAt,
-		id,
-		updatedAt,
-		firstName,
-		lastName,
-		phone,
-		email,
-		city,
-		country,
+		additionalInsurance,
 		address,
-		isRullesAccepted,
-		driverLicense,
 		carId,
 		childSeat,
-		ownDriver,
-		additionalInsurance,
+		city,
+		country,
+		createdAt,
+		driverLicense,
+		email,
+		firstName,
+		id,
+		isRullesAccepted,
+		lastName,
 		office,
-		startDate,
-		returnDate,
+		ownDriver,
+		phone,
 		price,
+		returnDate,
+		startDate,
+		updatedAt,
 	}: {
-		createdAt: string;
-		id: null | number;
-		updatedAt: string;
-		firstName: string;
-		lastName: string;
-		phone: string;
-		isRullesAccepted: boolean;
-		email: string;
-		city: string;
-		country: string;
+		additionalInsurance: boolean;
 		address: string;
-		driverLicense: string;
 		carId: number;
 		childSeat: number;
-		ownDriver: boolean;
-		additionalInsurance: boolean;
+		city: string;
+		country: string;
+		createdAt: string;
+		driverLicense: string;
+		email: string;
+		firstName: string;
+		id: null | number;
+		isRullesAccepted: boolean;
+		lastName: string;
 		office: string;
-		startDate: string;
-		returnDate: string;
+		ownDriver: boolean;
+		phone: string;
 		price: number;
+		returnDate: string;
+		startDate: string;
+		updatedAt: string;
 	}) {
 		this.createdAt = createdAt;
 		this.id = id;
@@ -106,216 +106,216 @@ class FormEntity implements Entity {
 	}
 
 	public static initialize({
-		id,
-		firstName,
-		lastName,
-		phone,
-		email,
-		city,
-		country,
+		additionalInsurance,
 		address,
-		driverLicense,
 		carId,
 		childSeat,
-		ownDriver,
-		additionalInsurance,
-		office,
-		startDate,
+		city,
+		country,
 		createdAt,
-		returnDate,
+		driverLicense,
+		email,
+		firstName,
+		id,
 		isRullesAccepted,
-		updatedAt,
+		lastName,
+		office,
+		ownDriver,
+		phone,
 		price,
+		returnDate,
+		startDate,
+		updatedAt,
 	}: {
-		createdAt: string;
-		updatedAt: string;
-		id: null | number;
-		firstName: string;
-		lastName: string;
-		phone: string;
-		email: string;
-		city: string;
-		country: string;
+		additionalInsurance: boolean;
 		address: string;
-		driverLicense: string;
-		isRullesAccepted: boolean;
 		carId: number;
 		childSeat: number;
-		ownDriver: boolean;
-		additionalInsurance: boolean;
+		city: string;
+		country: string;
+		createdAt: string;
+		driverLicense: string;
+		email: string;
+		firstName: string;
+		id: null | number;
+		isRullesAccepted: boolean;
+		lastName: string;
 		office: string;
-		startDate: string;
-		returnDate: string;
+		ownDriver: boolean;
+		phone: string;
 		price: number;
+		returnDate: string;
+		startDate: string;
+		updatedAt: string;
 	}): FormEntity {
 		return new FormEntity({
-			id,
-			firstName,
-			lastName,
-			phone,
-			email,
+			additionalInsurance,
+			address,
+			carId,
+			childSeat,
 			city,
 			country,
-			address,
-			driverLicense,
-			carId,
-			isRullesAccepted,
-			childSeat,
-			ownDriver,
-			additionalInsurance,
-			office,
-			startDate,
-			returnDate,
-			price,
 			createdAt,
+			driverLicense,
+			email,
+			firstName,
+			id,
+			isRullesAccepted,
+			lastName,
+			office,
+			ownDriver,
+			phone,
+			price,
+			returnDate,
+			startDate,
 			updatedAt,
 		});
 	}
 
 	public static initializeNew({
-		firstName,
-		lastName,
-		phone,
-		email,
-		city,
-		country,
+		additionalInsurance,
 		address,
-		driverLicense,
 		carId,
 		childSeat,
-		ownDriver,
-		additionalInsurance,
-		office,
-		startDate,
+		city,
+		country,
+		driverLicense,
+		email,
+		firstName,
 		isRullesAccepted,
-		returnDate,
+		lastName,
+		office,
+		ownDriver,
+		phone,
 		price,
+		returnDate,
+		startDate,
 	}: {
-		firstName: string;
-		lastName: string;
-		phone: string;
-		email: string;
-		city: string;
-		country: string;
+		additionalInsurance: boolean;
 		address: string;
-		driverLicense: string;
-		isRullesAccepted: boolean;
 		carId: number;
 		childSeat: number;
-		ownDriver: boolean;
-		additionalInsurance: boolean;
+		city: string;
+		country: string;
+		driverLicense: string;
+		email: string;
+		firstName: string;
+		isRullesAccepted: boolean;
+		lastName: string;
 		office: string;
-		startDate: string;
-		returnDate: string;
+		ownDriver: boolean;
+		phone: string;
 		price: number;
+		returnDate: string;
+		startDate: string;
 	}): FormEntity {
 		return new FormEntity({
-			createdAt: "",
-			id: null,
-			updatedAt: "",
-			firstName,
-			lastName,
-			phone,
-			email,
-			city,
-			country,
+			additionalInsurance,
 			address,
-			driverLicense,
-			isRullesAccepted,
 			carId,
 			childSeat,
-			ownDriver,
-			additionalInsurance,
+			city,
+			country,
+			createdAt: "",
+			driverLicense,
+			email,
+			firstName,
+			id: null,
+			isRullesAccepted,
+			lastName,
 			office,
-			startDate,
-			returnDate,
+			ownDriver,
+			phone,
 			price,
+			returnDate,
+			startDate,
+			updatedAt: "",
 		});
 	}
 
 	public toNewObject(): {
+		additionalInsurance: boolean;
+		address: string;
 		carId: number;
 		childSeat: number;
-		ownDriver: boolean;
-		additionalInsurance: boolean;
-		office: string;
-		startDate: string;
-		returnDate: string;
 		city: string;
 		country: string;
-		address: string;
-		isRullesAccepted: boolean;
 		driverLicense: string;
-		price: number;
 		email: string;
-		phone: string;
 		firstName: string;
+		isRullesAccepted: boolean;
 		lastName: string;
+		office: string;
+		ownDriver: boolean;
+		phone: string;
+		price: number;
+		returnDate: string;
+		startDate: string;
 	} {
 		return {
+			additionalInsurance: this.additionalInsurance,
+			address: this.address,
 			carId: this.carId,
 			childSeat: this.childSeat,
-			ownDriver: this.ownDriver,
-			additionalInsurance: this.additionalInsurance,
-			office: this.office,
-			startDate: this.startDate,
-			returnDate: this.returnDate,
-			price: this.price,
-			email: this.email,
-			isRullesAccepted: this.isRullesAccepted,
-			phone: this.phone,
-			firstName: this.firstName,
-			lastName: this.lastName,
 			city: this.city,
 			country: this.country,
-			address: this.address,
 			driverLicense: this.driverLicense,
+			email: this.email,
+			firstName: this.firstName,
+			isRullesAccepted: this.isRullesAccepted,
+			lastName: this.lastName,
+			office: this.office,
+			ownDriver: this.ownDriver,
+			phone: this.phone,
+			price: this.price,
+			returnDate: this.returnDate,
+			startDate: this.startDate,
 		};
 	}
 
 	public toObject(): {
+		additionalInsurance: boolean;
+		address: string;
 		carId: number;
 		childSeat: number;
-		ownDriver: boolean;
-		additionalInsurance: boolean;
-		office: string;
-		startDate: string;
-		returnDate: string;
-		price: number;
-		createdAt: string;
-		id: number;
-		updatedAt: string;
-		email: string;
-		phone: string;
-		firstName: string;
-		isRullesAccepted: boolean;
-		lastName: string;
 		city: string;
 		country: string;
-		address: string;
+		createdAt: string;
 		driverLicense: string;
+		email: string;
+		firstName: string;
+		id: number;
+		isRullesAccepted: boolean;
+		lastName: string;
+		office: string;
+		ownDriver: boolean;
+		phone: string;
+		price: number;
+		returnDate: string;
+		startDate: string;
+		updatedAt: string;
 	} {
 		return {
+			additionalInsurance: this.additionalInsurance,
+			address: this.address,
 			carId: this.carId,
 			childSeat: this.childSeat,
-			ownDriver: this.ownDriver,
-			additionalInsurance: this.additionalInsurance,
-			office: this.office,
-			startDate: this.startDate,
-			returnDate: this.returnDate,
-			price: this.price,
-			createdAt: this.createdAt,
-			isRullesAccepted: this.isRullesAccepted,
-			id: this.id as number,
-			updatedAt: this.updatedAt,
-			email: this.email,
-			phone: this.phone,
-			firstName: this.firstName,
-			lastName: this.lastName,
 			city: this.city,
 			country: this.country,
-			address: this.address,
+			createdAt: this.createdAt,
 			driverLicense: this.driverLicense,
+			email: this.email,
+			firstName: this.firstName,
+			id: this.id as number,
+			isRullesAccepted: this.isRullesAccepted,
+			lastName: this.lastName,
+			office: this.office,
+			ownDriver: this.ownDriver,
+			phone: this.phone,
+			price: this.price,
+			returnDate: this.returnDate,
+			startDate: this.startDate,
+			updatedAt: this.updatedAt,
 		};
 	}
 }

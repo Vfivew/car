@@ -1,4 +1,4 @@
-import { Knex } from "knex";
+import { type Knex } from "knex";
 
 const TABLE_NAME_CARS = "cars";
 const TABLE_NAME_CAR_DETAILS = "car_details";
@@ -24,40 +24,35 @@ const CarDetailsColumns = {
 
 const carSeedData = [
 	{
+		[CarColumns.IMAGE]:
+			"https://i.ibb.co/4SkRMV2/audi-s3.jpg",
 		[CarColumns.NAME]: "Audi S3 Limousine",
 		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
 	},
 	{
-		[CarColumns.NAME]: "Audi S3 Limousine",
-		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]: "https://i.ibb.co/1nn3nH3/toyota.jpg",
+		[CarColumns.NAME]: "Toyota RAV 4",
+		[CarColumns.RENT_PRICE]: 1200,
 	},
 	{
-		[CarColumns.NAME]: "Audi S3 Limousine",
-		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]: "https://i.ibb.co/rH46RrJ/Kia-Niro-EV.jpg",
+		[CarColumns.NAME]: "Kia Niro EV",
+		[CarColumns.RENT_PRICE]: 1050,
 	},
 	{
+		[CarColumns.IMAGE]: "https://i.ibb.co/fXVRyhr/Porsche-Cayenne-S.jpg",
 		[CarColumns.NAME]: "Audi S3 Limousine",
-		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.RENT_PRICE]: 1100,
 	},
 	{
-		[CarColumns.NAME]: "Audi S3 Limousine",
-		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]: "https://i.ibb.co/sqv4jFk/Tesla-Model-3-Sedan.jpg",
+		[CarColumns.NAME]: "Tesla 3 Sedan",
+		[CarColumns.RENT_PRICE]: 1400,
 	},
 	{
-		[CarColumns.NAME]: "Audi S3 Limousine",
-		[CarColumns.RENT_PRICE]: 800,
-		[CarColumns.IMAGE]:
-			"https://i.ibb.co/99wshX6/audi-s3-limousine-2020-01.jpg",
+		[CarColumns.IMAGE]: "https://i.ibb.co/gTbwNyN/Tesla-3.jpg",
+		[CarColumns.NAME]: "Tesla 3",
+		[CarColumns.RENT_PRICE]: 1100,
 	},
 ];
 
@@ -82,7 +77,7 @@ const carDetailsSeedData = [
 		[CarDetailsColumns.NUMBER_OF_DOORS]: 4,
 		[CarDetailsColumns.PANORAMIC_ROOF]: true,
 		[CarDetailsColumns.PARKING_SENSORS]: true,
-		[CarDetailsColumns.TRUNK_VOLUME]: 500,
+		[CarDetailsColumns.TRUNK_VOLUME]: 620,
 	},
 	{
 		[CarDetailsColumns.CAR_ID]: 3,
@@ -93,7 +88,7 @@ const carDetailsSeedData = [
 		[CarDetailsColumns.NUMBER_OF_DOORS]: 4,
 		[CarDetailsColumns.PANORAMIC_ROOF]: true,
 		[CarDetailsColumns.PARKING_SENSORS]: true,
-		[CarDetailsColumns.TRUNK_VOLUME]: 500,
+		[CarDetailsColumns.TRUNK_VOLUME]: 600,
 	},
 	{
 		[CarDetailsColumns.CAR_ID]: 4,
@@ -104,7 +99,7 @@ const carDetailsSeedData = [
 		[CarDetailsColumns.NUMBER_OF_DOORS]: 4,
 		[CarDetailsColumns.PANORAMIC_ROOF]: true,
 		[CarDetailsColumns.PARKING_SENSORS]: true,
-		[CarDetailsColumns.TRUNK_VOLUME]: 500,
+		[CarDetailsColumns.TRUNK_VOLUME]: 590,
 	},
 	{
 		[CarDetailsColumns.CAR_ID]: 5,
@@ -112,10 +107,10 @@ const carDetailsSeedData = [
 		[CarDetailsColumns.CENTRAL_LOCKING]: true,
 		[CarDetailsColumns.CLIMATE_CONTROL]: true,
 		[CarDetailsColumns.NAVIGATION_SYSTEM]: true,
-		[CarDetailsColumns.NUMBER_OF_DOORS]: 4,
+		[CarDetailsColumns.NUMBER_OF_DOORS]: 2,
 		[CarDetailsColumns.PANORAMIC_ROOF]: true,
 		[CarDetailsColumns.PARKING_SENSORS]: true,
-		[CarDetailsColumns.TRUNK_VOLUME]: 500,
+		[CarDetailsColumns.TRUNK_VOLUME]: 410,
 	},
 	{
 		[CarDetailsColumns.CAR_ID]: 6,
@@ -126,7 +121,7 @@ const carDetailsSeedData = [
 		[CarDetailsColumns.NUMBER_OF_DOORS]: 4,
 		[CarDetailsColumns.PANORAMIC_ROOF]: true,
 		[CarDetailsColumns.PARKING_SENSORS]: true,
-		[CarDetailsColumns.TRUNK_VOLUME]: 500,
+		[CarDetailsColumns.TRUNK_VOLUME]: 710,
 	},
 ];
 
