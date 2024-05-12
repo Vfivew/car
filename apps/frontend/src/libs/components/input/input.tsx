@@ -3,6 +3,7 @@ import {
 	type FieldErrors,
 	type FieldPath,
 	type FieldValues,
+	type UseFormRegister,
 } from "react-hook-form";
 
 import { getValidClassNames } from "~/libs/helpers/helpers.js";
@@ -19,12 +20,15 @@ type Properties<T extends FieldValues> = {
 	errors: FieldErrors<T>;
 	hasVisuallyHiddenLabel?: boolean;
 	iconName?: IconName;
-	inputMode?: "email" | "text";
+	inputMode?: "email" | "numeric" | "text";
 	label: string;
+	maxDate?: string;
+	minDate?: string;
 	name: FieldPath<T>;
 	placeholder?: string;
+	register?: UseFormRegister<T>;
 	rows?: number;
-	type?: "email" | "password" | "text";
+	type?: "date" | "email" | "number" | "password" | "text";
 };
 
 const Input = <T extends FieldValues>({
@@ -36,8 +40,11 @@ const Input = <T extends FieldValues>({
 	iconName,
 	inputMode = "text",
 	label,
+	maxDate = "",
+	minDate = "",
 	name,
 	placeholder = "",
+	register,
 	rows,
 	type = "text",
 }: Properties<T>): JSX.Element => {
@@ -81,8 +88,11 @@ const Input = <T extends FieldValues>({
 					className={inputClasses}
 					{...field}
 					inputMode={inputMode}
+					max={type === "date" ? maxDate : undefined}
+					min={type === "date" ? minDate : undefined}
 					placeholder={placeholder}
 					type={type}
+					{...(register && register(name, { valueAsNumber: true }))}
 				/>
 			)}
 			{hasError && <span className={styles["error"]}>{error as string}</span>}

@@ -39,11 +39,7 @@ const NotFound: React.FC = () => {
 							</div>
 							<div className={styles["error-sign-leg"]} />
 						</div>
-						<img
-							alt="logo"
-							className={styles["error-scene-img"]}
-							src={logo}
-						/>
+						<img alt="logo" className={styles["error-scene-img"]} src={logo} />
 					</div>
 				</div>
 				<h2 className={styles["title"]}>Page Not Found</h2>

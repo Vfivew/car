@@ -1,4 +1,3 @@
-export { type ExtractPath } from "./extract-path.type.js";
 export { type ServerErrorDetail } from "./server-error-detail.type.js";
 export {
 	type ServerCommonErrorResponse,
