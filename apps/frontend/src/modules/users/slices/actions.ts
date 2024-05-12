@@ -23,15 +23,6 @@ const updateProfile = createAsyncThunk<
 	return user;
 });
 
-const getAll = createAsyncThunk<UserAuthResponseDto, {}, AsyncThunkConfig>(
-	`${sliceName}/get-all`,
-	async (query, { extra }) => {
-		const { userApi } = extra;
-
-		return await userApi.getAll(query);
-	},
-);
-
 const getById = createAsyncThunk<UserAuthResponseDto, number, AsyncThunkConfig>(
 	`${sliceName}/get-by-id`,
 	(userPayload, { extra }) => {
@@ -41,4 +32,4 @@ const getById = createAsyncThunk<UserAuthResponseDto, number, AsyncThunkConfig>(
 	},
 );
 
-export { getAll, getById, updateProfile };
+export { getById, updateProfile };
