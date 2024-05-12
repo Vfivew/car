@@ -20,15 +20,6 @@ body {
 	background-color: var(--color-background);
 }
 
-.slick-slide > div {
-	margin: 0 10px;
-}
-
-.slick-slider .slick-arrow::before {
-	color: var(--dark-red-shadow);
-	opacity: 1;
-}
-
 #root {
 	display: flex;
 	flex-direction: column;
@@ -50,6 +41,10 @@ body {
 
 .no-overflow {
 	overflow: hidden;
+}
+
+.swiper-pagination-bullet {
+	background-color: red !important;
 }
 
 @-moz-document url-prefix() {
